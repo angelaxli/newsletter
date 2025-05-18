@@ -25,13 +25,27 @@ jobs:
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: >-
-            Please summarize the latest news from the Ethereum ecosystem
-            over the past 7 days. Include updates from blog.ethereum.org,
-            ethereum/pm GitHub, ethresear.ch, and ethereum-magicians.org.
-            Emphasize major network upgrades, new EIPs, and official blog
-            posts. Format the summary like WeekInEthereum, in markdown,
-            with all original links, section headers, TL;DR at top, emojis
-            and bullet points.
+            Please summarize the latest news from the Ethereum ecosystem 
+            over the past 7 days. Include updates from blog.ethereum.org, 
+            ethereum/pm GitHub, ethresear.ch, and ethereum-magicians.org. 
+            Emphasize major network upgrades, new EIPs, and official blog posts 
+            and highlight at the top of the output. Format like WeekInEthereum 
+            (https://weekinethereum.substack.com/p/week-in-ethereum-news-december-28-eb1), 
+            in markdown, with all original links and references.
+            
+            Structure the output into the following Markdown sections:
+            1. **Intro Paragraph** – Summarize the week’s key news in 1-2 sentences.
+            2. **Network Upgrades** – Mainnet/testnet upgrades, core dev meeting decisions.
+            3. **EIPs & Standards** – New/finalized EIPs/ERCs. Include links and status tags.
+            4. **Client Releases** – Execution & consensus layer client updates, grouped separately.
+            5. **Research & Development** – Notable technical research or protocol analysis.
+            6. **Ecosystem & Community** – Announcements, education, programs, partnerships.
+            7. **Centralization Watch** – Inject stats from context_stats.md below.
+            8. **Upcoming Dates** – Events, upgrade activations, hackathons.
+            
+            Use concise, link-rich markdown formatting. No TL;DR. Use a serious, editorial tone. 
+            Do not use emojis unless for critical alerts (e.g. centralization risk).
+            
             Save the result to: newsletter_${{ env.TIMESTAMP }}.md
             Use date range: past 7 days
           llm_api_key: ${{ secrets.LLM_API_KEY }}
@@ -62,4 +76,4 @@ jobs:
           # Find the latest newsletter file
           export FILE=$(ls newsletter_*.md | tail -n 1)
           echo "Using $FILE"
-          python send_newsletter.py "$FILE"
+          python scripts/send_newsletter.py "$FILE"
