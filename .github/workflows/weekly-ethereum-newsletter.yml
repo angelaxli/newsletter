@@ -232,6 +232,19 @@ jobs:
           
           context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
+      
+      - name: Debug Workspace Contents Before Artifact Upload
+        run: |
+          echo "Current working directory: $(pwd)"
+          echo "--- Listing GITHUB_WORKSPACE (${{ github.workspace }}) root contents (ls -la): ---"
+          ls -la ${{ github.workspace }}
+          echo "--- Recursively listing GITHUB_WORKSPACE contents (ls -laR) - showing all files in all subdirectories: ---"
+          ls -laR ${{ github.workspace }}
+          echo "--- Trying to find 'newsletter_*.md' files in GITHUB_WORKSPACE specifically: ---"
+          find ${{ github.workspace }} -name "newsletter_*.md" -ls
+          echo "--- Specifically checking for the exact file the AI claimed to save: ---"
+          ls -la ${{ github.workspace }}/newsletter_${{ env.TIMESTAMP }}.md || echo "Exact file ${{ github.workspace }}/newsletter_${{ env.TIMESTAMP }}.md not found by ls"
+          echo "--- End of Debug Workspace Contents ---"
 
       - name: Upload Summary Report
         uses: actions/upload-artifact@v4
