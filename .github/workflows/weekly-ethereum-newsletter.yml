@@ -67,8 +67,8 @@ jobs:
         with:
           python-version: '3.11'
           
-      - name: Ensure resend is installed for delivery
-        run: pip install resend
+      - name: Install dependencies round 2
+        run: pip install resend markdown2
 
       - name: Send Ethereum Newsletter via Resend
         env:
