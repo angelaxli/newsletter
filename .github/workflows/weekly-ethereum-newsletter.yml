@@ -46,9 +46,9 @@ jobs:
             any news about major network upgrades is considered most important and should be 
             highlighted on top of the output.
 
-            Save the result to: newsletter_${{ env.TIMESTAMP }}.md
             Use date range: past 7 days
-          context: scripts/prompt_context.md
+            context: scripts/prompt_context.md
+            Save the result to: newsletter_${{ env.TIMESTAMP }}.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       - name: Upload Summary Report
