@@ -204,8 +204,9 @@ jobs:
             {{context}}
 
             Use date range: past 7 days
-            context: scripts/prompt_context.md
             Save the result to: newsletter_${{ env.TIMESTAMP }}.md
+
+          context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       - name: Upload Summary Report
