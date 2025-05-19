@@ -46,6 +46,9 @@ jobs:
             any news about major network upgrades is considered most important and should be 
             highlighted on top of the output.
 
+            You are provided with structured context data:
+            {{context}}
+
             Use date range: past 7 days
             context: scripts/prompt_context.md
             Save the result to: newsletter_${{ env.TIMESTAMP }}.md
