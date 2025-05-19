@@ -1,12 +1,15 @@
+# build_prompt_context.py
+
 import requests
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
-TIMESTAMP = datetime.utcnow().strftime('%Y%m%d')
-OUTPUT_FILE = "prompt_context.md"
+OUTPUT_FILE = "scripts/prompt_context.md"
+DAYS = 7
 
-def fetch_recent_commits(repo, days=7):
-    since = (datetime.utcnow() - timedelta(days=days)).isoformat() + "Z"
+
+def fetch_recent_commits(repo):
+    since = (datetime.utcnow() - timedelta(days=DAYS)).isoformat() + "Z"
     url = f"https://api.github.com/repos/ethereum/{repo}/commits"
     params = {"since": since}
     headers = {"Accept": "application/vnd.github.v3+json"}
@@ -16,34 +19,49 @@ def fetch_recent_commits(repo, days=7):
     return [
         f"- [{c['commit']['message'].splitlines()[0]}]({c['html_url']})"
         for c in commits
-    ] or ["No commits in past 7 days."]
+    ] or ["- No recent commits"]
 
-def get_client_diversity():
+
+def extract_client_diversity():
     url = "https://clientdiversity.org"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     table = soup.find("table")
-    stats = []
-    if table:
-        for row in table.find_all("tr"):
-            cols = [td.get_text(strip=True) for td in row.find_all("td")]
-            if cols:
-                stats.append(" | ".join(cols))
-    return stats or ["Client diversity data unavailable."]
+    if not table:
+        return ["Client diversity data unavailable."]
+
+    rows = table.find_all("tr")
+    data = []
+    for row in rows[1:]:
+        cols = [td.get_text(strip=True) for td in row.find_all("td")]
+        if len(cols) >= 2:
+            name, share = cols[0], cols[1]
+            data.append(f"- {name}: {share}")
+    return data if data else ["Client diversity data parsing failed."]
+
 
 def main():
-    eip_data = fetch_recent_commits("EIPs")
-    erc_data = fetch_recent_commits("ERCs")
-    diversity_stats = get_client_diversity()
+    eips = fetch_recent_commits("EIPs")
+    ercs = fetch_recent_commits("ERCs")
+    clients = extract_client_diversity()
 
     with open(OUTPUT_FILE, "w") as f:
-        f.write(f"### EIP GitHub Updates (last 7 days)\n")
-        f.write("\n".join(eip_data) + "\n\n")
-        f.write(f"### ERC GitHub Updates (last 7 days)\n")
-        f.write("\n".join(erc_data) + "\n\n")
-        f.write(f"### Client Diversity Stats (live)\n")
-        for stat in diversity_stats:
-            f.write(f"- {stat}\n")
+        f.write("# Weekly Ethereum Context\n\n")
+
+        f.write("## Client Diversity\n")
+        for line in clients:
+            f.write(f"{line}\n")
+        f.write("\n")
+
+        f.write("## EIP Activity\n")
+        for line in eips:
+            f.write(f"{line}\n")
+        f.write("\n")
+
+        f.write("## ERC Activity\n")
+        for line in ercs:
+            f.write(f"{line}\n")
+        f.write("\n")
 
 if __name__ == "__main__":
     main()
