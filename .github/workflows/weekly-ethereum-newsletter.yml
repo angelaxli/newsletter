@@ -29,6 +29,9 @@ jobs:
       - name: Build Prompt Context (last 7 days)
         run: python scripts/build_prompt_context.py
 
+      - name: Print context contents
+        run: cat scripts/prompt_context.md
+
       - name: Generate Ethereum Newsletter via OpenHands
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
