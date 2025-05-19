@@ -1,5 +1,3 @@
-# build_prompt_context.py
-
 import requests
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
@@ -17,9 +15,9 @@ def fetch_recent_commits(repo):
     response.raise_for_status()
     commits = response.json()
     return [
-        f"- [{c['commit']['message'].splitlines()[0]}]({c['html_url']})"
+        f"{c['commit']['message'].splitlines()[0]} ({c['html_url']})"
         for c in commits
-    ] or ["- No recent commits"]
+    ] or ["No recent commits"]
 
 
 def extract_client_diversity():
@@ -36,7 +34,7 @@ def extract_client_diversity():
         cols = [td.get_text(strip=True) for td in row.find_all("td")]
         if len(cols) >= 2:
             name, share = cols[0], cols[1]
-            data.append(f"- {name}: {share}")
+            data.append(f"{name} {share}")
     return data if data else ["Client diversity data parsing failed."]
 
 
@@ -46,21 +44,19 @@ def main():
     clients = extract_client_diversity()
 
     with open(OUTPUT_FILE, "w") as f:
-        f.write("# Weekly Ethereum Context\n\n")
-
-        f.write("## Client Diversity\n")
+        f.write("## Client Diversity (via clientdiversity.org)\n\n")
         for line in clients:
-            f.write(f"{line}\n")
+            f.write(f"- {line}\n")
         f.write("\n")
 
-        f.write("## EIP Activity\n")
+        f.write("## EIPs (Ethereum improvement proposals)\n\n")
         for line in eips:
-            f.write(f"{line}\n")
+            f.write(f"- {line}\n")
         f.write("\n")
 
-        f.write("## ERC Activity\n")
+        f.write("## ERCs (application layer)\n\n")
         for line in ercs:
-            f.write(f"{line}\n")
+            f.write(f"- {line}\n")
         f.write("\n")
 
 if __name__ == "__main__":
