@@ -68,8 +68,17 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
+          TIMESTAMP: ${{ env.TIMESTAMP }}
         run: |
-          # Find the latest newsletter file
-          export FILE=$(ls newsletter_*.md | tail -n 1)
-          echo "Using $FILE"
+          # Find the latest generated newsletter file
+          ls -la  # 🔍 Add this to log the current directory and all files
+
+          FILE=$(ls newsletter_*.md 2>/dev/null | tail -n 1)
+
+          if [ -z "$FILE" ]; then
+            echo "❌ No newsletter file found in current directory."
+            exit 1
+          fi
+
+          echo "✅ Using $FILE"
           python scripts/send_newsletter.py "$FILE"
