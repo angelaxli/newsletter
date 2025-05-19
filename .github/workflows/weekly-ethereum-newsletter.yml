@@ -66,6 +66,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          
+      - name: Ensure resend is installed for delivery
+        run: pip install resend
 
       - name: Send Ethereum Newsletter via Resend
         env:
