@@ -20,6 +20,9 @@ jobs:
       - name: Generate timestamp
         id: generate-timestamp
         run: echo "TIMESTAMP=$(date +'%Y%m%d')" >> $GITHUB_ENV
+      
+      - name: Build Prompt Context (last 7 days)
+        run: python scripts/build_prompt_context.py
 
       - name: Generate Ethereum Newsletter via OpenHands
         uses: xinbenlv/openhands-action@v1.0.1-rc3
@@ -34,6 +37,7 @@ jobs:
 
             Save the result to: newsletter_${{ env.TIMESTAMP }}.md
             Use date range: past 7 days
+          context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       - name: Upload Summary Report
