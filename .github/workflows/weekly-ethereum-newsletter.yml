@@ -318,3 +318,6 @@ jobs:
 
           echo "✅ Using $FILE"
           python scripts/send_newsletter.py "$FILE"
+
+          echo "✅ Using $FILE"
+          python scripts/send_newsletter.py "$FILE"
