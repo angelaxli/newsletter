@@ -59,8 +59,13 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 **7. Centralization watch: threatening the value of your ETH**
 
-  * **Content:** Provide updates and analysis related to Ethereum centralization risks, focusing on validator client diversity, liquid staking derivative dominance, MEV concentration (e.g., relay/builder centralization), and other relevant factors from the past 7 days that could impact network decentralization. **Crucially, any data or statistics on client diversity (execution or consensus) MUST be sourced from or cross-verified with `clientdiversity.org` for the current period. Report the latest available data and specify its 'as of' date from the source.** Each item should be a bullet point.
-  * **Keywords for Search (Starting Points):** "Ethereum staking news," "validator updates," "MEV-Boost," "liquid staking," "client diversity Ethereum," "DVT Ethereum," "Ethereum centralization risks," "clientdiversity.org."
+  * **Content:**
+    * Provide updates and analysis related to Ethereum centralization risks.
+    * **For client diversity statistics (both execution and consensus layers), YOU MUST use the data from the 'Manually Updated Client Diversity Data' section which you have loaded from `scripts/prompt_context.md` as per your initial instructions. This data has been manually retrieved and verified for accuracy for the current week.** Do not attempt to scrape or find this data from the web yourself.
+    * Present these client diversity figures clearly. When mentioning the source, attribute it exactly as specified in the 'Source Checked' or '*Note: Sourced from...*' lines within the 'Manually Updated Client Diversity Data' section of the context you loaded.
+    * You can also discuss other aspects of centralization from the past 7 days, such as trends in liquid staking derivative dominance, MEV concentration (e.g., relay/builder centralization), and other relevant factors that could impact network decentralization, sourcing these from general reputable sources for the 7-day period.
+    * If the 'Manually Updated Client Diversity Data' section (from `scripts/prompt_context.md`) includes 'Key Observations/Changes this Week', incorporate these observations into your summary for the client diversity part.
+    * Each distinct piece of information or data point should be a bullet point.
 
 **8. Client Releases**
 
