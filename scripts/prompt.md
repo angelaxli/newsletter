@@ -6,7 +6,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
 
-**0. Highlight of the Week**
+**Highlight of the Week**
 
   * **Content:** Present the single most critical or impactful update from **within the specified 7-day period**. If multiple significant events occurred, select the one with the broadest impact or novelty.
   * **Focus:** Major network upgrade milestones achieved *this week*, breakthrough EIPs proposed/advanced *this week*, crucial official announcements made *this week*, or major security events that happened *this week*.
