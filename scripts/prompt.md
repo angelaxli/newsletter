@@ -30,35 +30,33 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
   * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
-**2. Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
+**Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
 
   * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**3. Fusaka (Osaka + Fulu) Upgrade (or next future named upgrade after Pectra)**
+**Fusaka (Osaka + Fulu) Upgrade (or next future named upgrade after Pectra)**
 
   * **Content:** Report any early discussions, research, or proposed EIPs related to the next major upgrade planned after Pectra (e.g., Fusaka, or its then-current name), if such news emerged in the past 7 days.
   * **Keywords for Search:** "Fusaka upgrade," "[next\_future\_upgrade\_name] Ethereum."
 
-**4. Layer 1**
+**Layer 1**
 
   * **Content:** Cover other significant L1 developments from the past 7 days not fitting under specific upgrade names. This could include research on Verkle Trees, State Expiry/History Management, SSZ, EOF, MEV strategy discussions, or new EIPs with L1 impact that aren't yet tied to a named upgrade.
   * **Keywords for Search:** "Ethereum Layer 1 updates," "Verkle Trees Ethereum," "Ethereum state expiry," "EVM Object Format EOF."
 
-**5. Ethereum Foundation Blog/Announcements**
+**Ethereum Foundation Blog/Announcements**
 
   * **Content:** Summarize and link to any official posts or significant announcements from the Ethereum Foundation or its core teams made in the past 7 days. Verify dates.
   * **Keywords for Search:** "Ethereum Foundation blog," "EF announcement."
 
-**6. Research**
+**Research**
 
   * **Content:** Highlight significant research findings or discussions (e.g., from ethresear.ch) that directly impact protocol direction or understanding, if published or heavily discussed in the past 7 days, and not covered under specific upgrade or L1 sections.
   * **Keywords for Search:** "ethresear.ch [relevant topic]," "Ethereum research paper."
 
 
-## **Other Standard Newsletter Sections:** *(The following sections, like all sections in this newsletter, should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
-
-**7. Centralization watch: threatening the value of your ETH**
+**Centralization watch: threatening the value of your ETH**
 
   * **Content:**
     * Provide updates and analysis related to Ethereum centralization risks.
@@ -68,7 +66,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
     * If the 'Manually Updated Client Diversity Data' section (from `scripts/prompt_context.md`) includes 'Key Observations/Changes this Week', incorporate these observations into your summary for the client diversity part.
     * Each distinct piece of information or data point should be a bullet point.
 
-**8. Client Releases**
+**Client Releases**
 
   * **Content:** List new versions or significant updates for Ethereum client software released in the past 7 days. Each release should be a bullet point.
   * **Focus:**
@@ -76,7 +74,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * **Execution Layer Clients:** New releases for Besu, Erigon, Geth, Nethermind. Note key features, performance improvements, or critical fixes.
   * **Keywords for Search (Starting Points):** "[Client Name] release," "Ethereum client updates," "GitHub [Client Name] releases."
 
-**9. Layer 2**
+**Layer 2**
 
   * **Content:** Significant developments from major Layer 2 scaling solutions and the broader L2 ecosystem from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -87,9 +85,8 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Discussions on L2 interoperability, data availability solutions for L2s (e.g., EIP-4844 impact, Danksharding).
   * **Keywords for Search (Starting Points):** "[L2 Name] news," "Layer 2 Ethereum updates," "Optimistic rollup," "ZK rollup," "L2beat," "EIP-4844 blobs."
 
-**10. EIPs/Standards**
-
-  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs) and application-level standards (ERCs), or those with significant status changes or active discussions in the past 7 days. Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context. Each item should be a bullet point.
+**EIPs/Standards**
+  * **Content:** Ethereum Improvement Proposals (EIPs of all categories, including Core, Networking, Interface, and ERCs) and any with significant status changes or active discussions from the past 7 days. Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context. MUST first list all relevant EIPs that are NOT ERCs under a label like: EIPs (Ethereum improvement proposals): Each item should be a bullet point, e.g., * EIP-XXXX: [Title/Brief Description] Following that, MUST list all relevant ERCs under a label: ERCs (application layer): Each item should be a bullet point, e.g., * ERC-YYYY: [Title/Brief Description]
   * **Focus:**
       * New EIPs/ERCs (identified by merged Draft PRs in `Ethereum/EIPs`).
       * EIPs/ERCs moving to "Review," "Last Call," "Final," or "Stagnant" (identified by merged PRs reflecting these status changes in `Ethereum/EIPs`).
@@ -98,9 +95,9 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Primary Sources for this Section:**
       * `https://github.com/Ethereum/EIPs` (for new proposals, status changes via merged PRs, and official EIP content).
       * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
-  * **Keywords for Search (Starting Points):** "New EIP," "ERC [number] update," "Ethereum Improvement Proposal discussion," "Ethereum Magicians EIP."
+  * **Keywords for Search (Focus on monitoring Ethereum/EIPs repo activity):** "New EIP," "New ERC," "EIP status change," "ERC status change," "Ethereum Improvement Proposal discussion," "Ethereum Magicians EIP."
 
-**11. Developer Stuff**
+**Developer Stuff**
 
   * **Content:** Updates on developer tools, frameworks, libraries, smart contract languages, and important resources for builders, from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -111,7 +108,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Security tools for developers (e.g., linters, static analyzers).
   * **Keywords for Search (Starting Points):** "[Tool Name] update," "Ethereum developer tools," "Solidity news," "Vyper news," "dApp development resources."
 
-**12. Security**
+**Security**
 
   * **Content:** Report on security incidents, vulnerabilities, audits, and best practices relevant to the Ethereum ecosystem, from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -122,7 +119,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Discussions on formal verification, bug bounties.
   * **Keywords for Search (Starting Points):** "DeFi hack," "Ethereum security vulnerability," "smart contract audit," "crypto exploit report," "Ethereum bug bounty."
 
-**13. Ecosystem**
+**Ecosystem**
 
   * **Content:** Broader news from the Ethereum ecosystem, including DAOs, NFTs, public goods, and community initiatives, from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -133,7 +130,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Community-led events, educational initiatives, or important discussions.
   * **Keywords for Search (Starting Points):** "Ethereum project launch," "DAO news," "Gitcoin grants," "NFT news Ethereum," "Ethereum community."
 
-**14. Enterprise**
+**Enterprise**
 
   * **Content:** Updates on how enterprises are using Ethereum technology (public, private, or hybrid), from the past 7 days. This section can be brief or omitted if no significant news. Each item should be a bullet point.
   * **Focus:**
@@ -141,7 +138,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Announcements from organizations like the Enterprise Ethereum Alliance (EEA) or Baseline Protocol.
   * **Keywords for Search (Starting Points):** "Enterprise Ethereum," "blockchain for business," "Baseline Protocol."
 
-**15. Notable at app layer**
+**Notable at app layer**
 
   * **Content:** Highlight interesting new decentralized applications (dapps), user-facing innovations, or significant updates to existing applications on Ethereum or L2s, from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -150,7 +147,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Trends in application development (e.g., SocialFi, DePIN, new gaming models).
   * **Keywords for Search (Starting Points):** "New Ethereum dApp," "[dApp Name] update," "DeFi project launch," "NFT marketplace news."
 
-**16. Regulation/Business/Tokens**
+**Regulation/Business/Tokens**
 
   * **Content:** News related to cryptocurrency regulation affecting Ethereum globally, significant business adoption, and important token-related developments (excluding price speculation), from the past 7 days. Each item should be a bullet point.
   * **Focus:**
@@ -161,7 +158,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Important news related to token standards, tokenomics of major projects (if not covered elsewhere), or utility of tokens.
   * **Keywords for Search (Starting Points):** "Ethereum regulation news," "crypto policy," "institutional crypto," "SEC crypto," "[Major Token] news."
 
-**17. Onchain Stats**
+**Onchain Stats**
 
   * **Content:** Key metrics and notable trends observed on the Ethereum network and its ecosystem, reflecting data from the past 7 days or current stats. Each item should be a bullet point.
   * **Focus:**
@@ -173,7 +170,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Relevant NFT market statistics (e.g., sales volume, unique buyers).
   * **Keywords for Search (Starting Points):** "Ethereum gas fees," "ETH price chart," "Ethereum on-chain data Dune," "DeFi TVL," "Ethereum staking stats."
 
-**18. Miscellaneous**
+**Miscellaneous**
 
   * **Content:** A collection of other interesting articles, blog posts, podcasts, videos, or discussions from the past 7 days that don't fit neatly into other categories but are relevant and insightful for the Ethereum community. Each item should be a bullet point.
   * **Focus:**
@@ -183,13 +180,13 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Links to useful tools or resources not covered elsewhere.
   * **Keywords for Search (Starting Points):** "Ethereum community discussion," "[Influencer Name] Ethereum blog/podcast," "Ethereum explained."
 
-**19. Job Postings**
+**Job Postings**
 
   * **Content:** List job opportunities within the Ethereum ecosystem, ideally posted or highlighted in the past 7 days. Each item should be a bullet point.
   * **Focus:** Roles from various companies and projects in the space.
   * **Keywords for Search (Starting Points):** "Ethereum jobs," "blockchain developer jobs," "crypto jobs [specific role]."
 
-**20. Upcoming Dates of Note**
+**Upcoming Dates of Note**
 
   * **Content:** A list of important upcoming Ethereum-related virtual and in-person events, conferences, workshops, and deadlines. Each item should be a bullet point.
   * **Focus:**
