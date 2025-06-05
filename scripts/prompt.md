@@ -14,16 +14,17 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 -----
 
-## **Core Protocol & Research News Sections:** *(The following numbered sections 1-6 are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
+## **Eth News and Links** *(Sections should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
-**1. Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
-
+**Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
   * **Content:**
-      * Provide summaries for any core developer calls (ACDE, ACDC, etc.) that had notes published or were discussed within the past 7 days.
-      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org/u/abcoathup/activity`).** Check this source for any new call notes posted within the 7-day window.
-      * For each call summarized, **you MUST include a direct link to the specific Ethereum Magicians post** (e.g., `https://ethereum-magicians.org/t/acdc-call-123-date/xxxxx`).
-      * The structure and level of detail for each call's summary should emulate how "Week in Ethereum News" typically presents these (e.g., highlighting key discussion points, decisions, and action items, often with sub-bullets for different topics discussed in the call).
-      * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
+      * Identify any core developer calls (ACDE, ACDC, etc.) for which notes were published or significant discussions occurred within the            past 7 days.
+      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-                      magicians.org/u/abcoathup/activity`).** Check this source for any new call notes posted within the 7-day window.
+      * For each call that you report on, you MUST:
+        1. Clearly state the name of the call and its verified date (e.g., "ACDC Call #123 - YYYY-MM-DD").
+        2. Provide a direct link to the specific Ethereum Magicians post by @abcoathup (e.g., https://ethereum-magicians.org/t/acdc-call-123-            date/xxxxx). If a Magicians summary from @abcoathup for a relevant call is unavailable, link to the official notes on ethereum/pm             GitHub if they exist for that week.
+        3. Present a concise summary of the call's key discussion points, decisions, and action items. This summary MUST be structured using             bullet points (or nested sub-bullet points if appropriate) to detail the different topics and their outcomes as covered during the            call. Emulate the detailed, bulleted style found in @abcoathup's summaries on Ethereum Magicians or typical "Week in Ethereum                 News" call reports. Each main topic or EIP discussed should ideally be its own bullet point with brief explanatory text.
+      * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official             sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT           report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by                  `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
   * **Primary Sources for this Section:**
       * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity`.
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
