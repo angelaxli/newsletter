@@ -57,14 +57,28 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 
 **Centralization watch: threatening the value of your ETH**
-
-  * **Content:**
-    * Provide updates and analysis related to Ethereum centralization risks.
-    * **For client diversity statistics (both execution and consensus layers), YOU MUST use the data from the 'Manually Updated Client Diversity Data' section which you have loaded from `scripts/prompt_context.md` as per your initial instructions. This data has been manually retrieved and verified for accuracy for the current week.** Do not attempt to scrape or find this data from the web yourself.
-    * Present these client diversity figures clearly. When mentioning the source, attribute it exactly as specified in the 'Source Checked' or '*Note: Sourced from...*' lines within the 'Manually Updated Client Diversity Data' section of the context you loaded.
-    * You can also discuss other aspects of centralization from the past 7 days, such as trends in liquid staking derivative dominance, MEV concentration (e.g., relay/builder centralization), and other relevant factors that could impact network decentralization, sourcing these from general reputable sources for the 7-day period.
-    * If the 'Manually Updated Client Diversity Data' section (from `scripts/prompt_context.md`) includes 'Key Observations/Changes this Week', incorporate these observations into your summary for the client diversity part.
-    * Each distinct piece of information or data point should be a bullet point.
+* **Content:**
+  * Provide updates and analysis related to Ethereum centralization risks.
+  * **For client diversity statistics (both execution and consensus layers), YOU MUST use the data from the 'Manually Updated Client Diversity Data' section which you have loaded from `scripts/prompt_context.md` as per your initial instructions. This data has been manually retrieved and verified for accuracy for the current week.** Do not attempt to scrape or find this data from the web yourself.
+    * **Key Highlights to Include (if data is available in the `{{context}}` under 'Manually Updated Client Diversity Data' or from other reputable sources for the week):**
+        * **Lido's Staking Share:** Start with Lido's current staking percentage if available (e.g., "🚨 Lido at XX.X% (see dashboard: `https://dune.com/hildobby/eth2-staking`), [comment on proximity to 33.3% threshold]"(learn more about the risks: `https://notes.ethereum.org/@djrtwo/risks-of-lsd`)).
+        * **Execution Layer Summary:** Briefly state the approximate share of the top 1-2 execution clients (e.g., "Execution layer: Geth at ~XX% & Nethermind at ~YY%"). If your `{{context}}` data includes a note like "(estimate based on Z% self-reported data)", include that.
+        * **Consensus Layer Summary:** Briefly state the approximate share of the top 1-2 consensus clients (e.g., "Consensus layer: Prysm at ~XX%").
+    * **Mandatory Statements:**
+        * **Always include:** "Any client bug over 33.3% could mean loss of finality"
+        * **Always include:** "Better geographic diversity is optimal (see node distribution at `https://nodewatch.io/`), particularly outside of North America & Europe."
+    * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned (Lido, Geth, Nethermind, Prysm, etc.), YOU MUST use the data provided in the 'Manually Updated Client Diversity Data' section which you have loaded from `scripts/prompt_context.md` as per your initial instructions. Attribute the source as "via clientdiversity.org" or as specified in the context data. Do not attempt to scrape or find these specific percentages from the web yourself.
+    * **Other Centralization Aspects:** You can briefly discuss other aspects of centralization from the past 7 days if there were significant developments (e.g., trends in liquid staking derivative dominance beyond Lido if noteworthy, major MEV concentration news).
+    * **Structure:** Present this as a few focused bullet points or short paragraphs, aiming for the style:
+        ```
+        🚨 Lido at 28.4% (see dashboard: `https://dune.com/hildobby/eth2-staking`), still too close to 33.3% threshold
+        * Client diversity (via clientdiversity.org):
+            * Execution layer: Geth ~43% & Nethermind ~36% (estimate based on 74% self reported data)
+            * Consensus layer: Prysm 34%
+        * Any client bug over 33.3% could mean loss of finality (learn more about the risks: `https://notes.ethereum.org/@djrtwo/risks-of-lsd`)
+        * Better geographic diversity is optimal (see node distribution at `https://nodewatch.io/`), particularly outside of North America & Europe
+        ```
+    * If the 'Manually Updated Client Diversity Data' section (from `scripts/prompt_context.md`) includes 'Key Observations/Changes this Week', you can weave these observations into your narrative.
 
 **Client Releases**
 
