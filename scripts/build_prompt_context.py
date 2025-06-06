@@ -8,10 +8,15 @@ DAYS = 7
 # Manually update
 
 MANUAL_CLIENT_DIVERSITY_DATA = {
-    "section_title": "Manually Updated Client Diversity Data", # This title should match what the main AI prompt expects
+    "section_title": "Manually Updated Client Diversity Data",
     "source_checked": "clientdiversity.org (verified via execution-clients.com and Miga Labs)",
-    "date_data_pulled": "2025-06-01",  # <-- UPDATE THIS WEEKLY (date you got the data)
-    "data_as_of_date": "2025-05-30",  # <-- UPDATE THIS WEEKLY (date the data source refers to, if available)
+    "date_data_pulled": "2025-06-06",  
+    "data_as_of_date": "2025-06-06",  
+    "key_staking_entity_share": {
+        "entity_name": "Lido",
+        "share_percentage": "25.84%",
+        "source_link": "https://dune.com/hildobby/eth2-staking" 
+    },
     "consensus_clients_note": "Sourced from Miga Labs via clientdiversity.org",
     "consensus_clients": [
         "Lighthouse: 42.71%", 
@@ -31,10 +36,6 @@ MANUAL_CLIENT_DIVERSITY_DATA = {
         "Reth: 2%",
         "Other/Unknown: 0%"
     ],
-    "key_observations": [
-        # "Optional: Add any key observations here.",
-        # "e.g., Slight increase in Reth adoption noted this week."
-    ]
 }
 
 def fetch_recent_commits(repo_path_segment): # e.g., "EIPs"
