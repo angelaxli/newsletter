@@ -4,6 +4,7 @@
 
 The newsletter must cover **only the 7-day period concluding on the date of execution** (e.g., if executed on May 25, 2025, it covers Monday, May 19, 2025, to Sunday, May 25, 2025, inclusive). The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
 
+**Crucial Formatting Rule: Every single piece of information listed under a heading MUST start on a new line and be formatted as a proper Markdown bullet point (e.g., * Item 1...). There should be no run-on text directly after a heading. All lists must be formatted vertically.**
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
 
@@ -12,10 +13,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Focus:** Major network upgrade milestones achieved *this week*, breakthrough EIPs proposed/advanced *this week*, crucial official announcements made *this week*, or major security events that happened *this week*.
   * **Presentation:** A concise sentence or two, or a single bullet point with a link. Ensure this is a distinct highlight.
 
------
-
 ## **Eth News and Links** *(Sections should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
-
 
 **Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
   * **Content:**
