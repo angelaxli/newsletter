@@ -233,5 +233,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * **Crucially, ALL sections should ONLY be included in the output if there were relevant updates for them in the past 7 days.** If a section has no significant news for the week, it should be omitted entirely to match the lean style of "Week in Ethereum News."
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
+**AGENT BEHAVIOR ON WEB ACCESS FAILURE:** The successful generation of this newsletter depends on your ability to access live web sources. If you encounter an error and are unable to access a primary source (like ethereum-magicians.org or github.com/ethereum/pm), you MUST NOT generate a partial newsletter. Instead, your primary goal should be to report this failure clearly. Your final output in this case should be an error report listing the sources you could not access and why.
+
 **Output Format:**
 The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. Start with the "Highlight of the Week" section. All list items must use bullet points.
