@@ -64,13 +64,21 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 **7. Centralization watch: threatening the value of your ETH**
 
   * **Content:** Provide updates and analysis related to Ethereum centralization risks. Each item should be a bullet point.
-  * **Focus:**
     * **Lido&#39;s Staking Share:** Find the &#39;Lido Share&#39; percentage from the context data you loaded. **You MUST format this into a single, specific sentence like this:** &quot;🚨 [Lido at XX.X%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd).&quot;
     * * **Client Diversity Summary:** Briefly state the approximate share of the top 1-2 execution and consensus clients using the data from the context.
     * **Mandatory Statement &amp; Formatting:**
       * **After presenting the client diversity summary, you MUST include this exact bullet point:** &quot;* Any client bug over 33.3% could mean loss of finality.&quot;
       * **Always include this exact bullet point:** &quot;* Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America &amp; Europe.&quot;
-  * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
+      * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
+* **Structure:** Present this as a few focused bullet points, aiming for the style:
+        ```
+        🚨 [Lido at 28.4%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd)
+        * Client diversity (via clientdiversity.org):
+            * Execution layer: Geth ~43% & Nethermind ~36%
+            * Consensus layer: Prysm 34%
+        * Any client bug over 33.3% could mean loss of finality
+        * Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America & Europe
+        ```  
 
 **8. Client Releases**
 
@@ -93,16 +101,22 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **10. EIPs/Standards**
 
-  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs) and application-level standards (ERCs), or those with significant status changes or active discussions in the past 7 days. Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context. Each item should be a bullet point.
-  * **Focus:**
-      * New EIPs/ERCs (identified by merged Draft PRs in `Ethereum/EIPs`).
-      * EIPs/ERCs moving to "Review," "Last Call," "Final," or "Stagnant" (identified by merged PRs reflecting these status changes in `Ethereum/EIPs`).
-      * Significant community discussions (link to `ethereum-magicians.org` or relevant GitHub Issues/PRs within the EIPs repo).
-      * Breakdowns or explanations of important or complex EIPs/ERCs.
-  * **Primary Sources for this Section:**
-      * `https://github.com/Ethereum/EIPs` (for new proposals, status changes via merged PRs, and official EIP content).
-      * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
-  * **Keywords for Search (Starting Points):** "New EIP," "ERC [number] update," "Ethereum Improvement Proposal discussion," "Ethereum Magicians EIP."
+  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs of all categories) and any with significant status changes or active discussions from the past 7 days.
+    * Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context.
+    * **Output Structure within this Section:**
+    * The AI **MUST** group the findings into two categories: "EIPs" and "ERCs".
+    * **If and only if** there are relevant non-ERC EIP updates, present them under a label like: `EIPs (Ethereum improvement proposals):`
+        * Below this label, **each EIP update MUST be on a new line and formatted as a proper Markdown bullet point, following this exact structure: `* EIP-XXXX: [Official EIP Title]`**. A brief update note (e.g., `, moved to Final`) can be added after the title.
+    * **If and only if** there are relevant ERC updates (EIPs with `Category: ERC`), present them under a label like: `ERCs (application layer):`
+        * Below this label, **each ERC update MUST follow the same format: `* ERC-YYYY: [Official ERC Title]`**.
+    * **If a category (either non-ERC EIPs or ERCs) has no updates for the week, its label and list MUST be omitted entirely from the output.**
+* **Focus for Identification & Summarization:**
+    * For every EIP or ERC listed (whether new or updated), you MUST include its number followed by its official title.
+    * Note any status changes (e.g., moved to Final, Review, etc.) or brief descriptions of the update.
+* **Primary Sources for this Section:**
+    * `https://github.com/Ethereum/EIPs` (for all new proposals, status changes via merged PRs, and official EIP/ERC content).
+    * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
+* **Keywords for Search (Focus on monitoring `Ethereum/EIPs` repo activity):** "New EIP," "New ERC," "EIP status change," "ERC status change," "Ethereum Improvement Proposal discussion."
 
 **11. Developer Stuff**
 
