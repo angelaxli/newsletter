@@ -60,7 +60,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 **7. Centralization watch: threatening the value of your ETH**
 
   * **Content:** Provide updates and analysis related to Ethereum centralization risks. Each item should be a bullet point.
-  * **Must Include:**
+  * **Focus:**
     * **Lido&#39;s Staking Share:** Find the &#39;Lido Share&#39; percentage from the context data you loaded. **You MUST format this into a single, specific sentence like this:** &quot;🚨 [Lido at XX.X%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd).&quot;
     * * **Client Diversity Summary:** Briefly state the approximate share of the top 1-2 execution and consensus clients using the data from the context.
     * **Mandatory Statement &amp; Formatting:**
