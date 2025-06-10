@@ -7,114 +7,105 @@ OUTPUT_FILE = "scripts/prompt_context.md"
 DAYS = 7
 REQUEST_TIMEOUT = 15 # seconds
 HTTP_HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'application/vnd.github.v3+json'
 }
+# If you are hitting API rate limits, provide a GitHub token as an environment variable
+# GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+# if GITHUB_TOKEN:
+#     HTTP_HEADERS['Authorization'] = f'token {GITHUB_TOKEN}'
 
-# Before running your GitHub Action, update the values in this dictionary.
 MANUAL_CLIENT_DIVERSITY_DATA = {
     "section_title": "Manually Updated Client Diversity Data",
     "source_checked": "clientdiversity.org (verified via execution-clients.com and Miga Labs)",
-    "date_data_pulled": "2025-06-06",  # <-- UPDATE THIS WEEKLY (date you got the data)
-    "data_as_of_date": "2025-06-06",  # <-- UPDATE THIS WEEKLY (date the data source refers to, if available)
+    "date_data_pulled": "2025-06-09",
+    "data_as_of_date": "2025-06-09",
     "key_staking_entity_share": {
         "entity_name": "Lido",
-        "share_percentage": "25.84%",      # <-- UPDATE THIS WEEKLY
-        "source_link": "https://dune.com/hildobby/eth2-staking"  # <-- UPDATE THIS LINK IF NEEDED
+        "share_percentage": "25.68%",
+        "source_link": "https://dune.com/hildobby/eth2-staking"
     },
     "consensus_clients_note": "Sourced from Miga Labs via clientdiversity.org",
     "consensus_clients": [
-        "Lighthouse: 42.71%",
-        "Prysm: 30.91%",
-        "Teku: 13.86%",
-        "Nimbus: 8.74%",
-        "Lodestar: 2.67%",
-        "Grandine: 1.04%",
-        "Other/Unknown: 0.07%"
+        "Lighthouse: 42.71%", "Prysm: 30.91%", "Teku: 13.86%",
+        "Nimbus: 8.74%", "Lodestar: 2.67%", "Grandine: 1.04%", "Other/Unknown: 0.07%"
     ],
     "execution_clients_note": "Sourced from execution-clients.com",
     "execution_clients": [
-        "Geth: 41%",
-        "Nethermind: 38%",
-        "Besu: 16%",
-        "Erigon: 3%",
-        "Reth: 2%",
-        "Other/Unknown: 0%"
+        "Geth: 41%", "Nethermind: 38%", "Besu: 16%",
+        "Erigon: 3%", "Reth: 2%", "Other/Unknown: 0%"
     ],
 }
 
-def fetch_recent_commits(repo_path_segment):
-    """Fetches recent non-merge commits from a specific ethereum GitHub repo path segment."""
-    since_date = (datetime.utcnow() - timedelta(days=DAYS)).isoformat() + "Z"
-    url = f"https://api.github.com/repos/ethereum/{repo_path_segment}/commits"
-    if repo_path_segment.upper() == "ERCS":
-        url = "https://api.github.com/repos/ethereum/EIPs/commits"
+def fetch_repo_updates(repo_name):
+    """Fetches recently merged pull requests from a GitHub repository."""
+    print(f"Fetching updates for {repo_name}...")
+    since_date = (datetime.utcnow() - timedelta(days=DAYS)).isoformat()
+    # Query for pull requests closed and updated in the last week to catch merges
+    url = f"https://api.github.com/repos/{repo_name}/pulls"
+    params = {'state': 'closed', 'sort': 'updated', 'direction': 'desc', 'per_page': 50}
 
-    params = {"since": since_date}
-    headers = {"Accept": "application/vnd.github.v3+json", **HTTP_HEADERS}
-    commit_info_list = []
+    updates = []
     try:
-        response = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
+        response = requests.get(url, headers=HTTP_HEADERS, params=params, timeout=REQUEST_TIMEOUT)
         response.raise_for_status()
-        commits_data = response.json()
-        for commit_entry in commits_data:
-            commit_message = commit_entry['commit']['message']
-            if not commit_message.lower().startswith('merge pull request') and \
-               not commit_message.lower().startswith('merge branch'):
-                first_line_of_message = commit_message.splitlines()[0]
-                if len(first_line_of_message) > 120:
-                    first_line_of_message = first_line_of_message[:117] + "..."
-                commit_info_list.append(f"{first_line_of_message} ({commit_entry['html_url']})")
-        if not commit_info_list:
-            return [f"No recent non-merge commits found for {repo_path_segment} in the last {DAYS} days."]
+        prs = response.json()
+        
+        for pr in prs:
+            # Check if 'merged_at' exists (is not None) and is within our date range
+            if pr.get('merged_at') and pr['merged_at'] > since_date:
+                updates.append(f"Merged PR #{pr['number']}: \"{pr['title']}\" - Link: {pr['html_url']}")
+                
+        if not updates:
+            return [f"No recently merged PRs found for {repo_name}."]
+            
     except requests.exceptions.RequestException as e:
-        return [f"Error fetching commits for {repo_path_segment}: {e}"]
+        return [f"Error fetching updates for {repo_name}: {e}"]
     except Exception as e:
-        return [f"An unexpected error occurred fetching commits for {repo_path_segment}: {e}"]
-    return commit_info_list
+        return [f"An unexpected error occurred fetching updates for {repo_name}: {e}"]
+    return updates
 
 def main():
     """Main function to build the context file."""
     print("Starting context build...")
-    eips_section_commits = fetch_recent_commits("EIPs")
-    ercs_section_commits = fetch_recent_commits("ERCs")
+    
+    # Fetch dynamic data
+    eip_updates = fetch_repo_updates("ethereum/EIPs")
+    erc_updates = fetch_repo_updates("ethereum/ERCs")
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        # Write the manually updated data
-        f.write(f"## {MANUAL_CLIENT_DIVERSITY_DATA['section_title']} (Week of {MANUAL_CLIENT_DIVERSITY_DATA['date_data_pulled']})\n\n")
-        f.write(f"**Source Checked:** {MANUAL_CLIENT_DIVERSITY_DATA['source_checked']}\n")
-        f.write(f"**Date Data Pulled:** {MANUAL_CLIENT_DIVERSITY_DATA['date_data_pulled']}\n\n")
+        f.write("# Raw Context Data for Ethereum Newsletter\n\n")
+        f.write("This file contains raw data gathered for the weekly newsletter. The AI's job is to process, summarize, and format this information.\n\n")
 
-        # Write Lido data
+        # --- Write Manual Data ---
+        f.write(f"## {MANUAL_CLIENT_DIVERSITY_DATA['section_title']}\n\n")
+        f.write(f"**Date Data Pulled:** {MANUAL_CLIENT_DIVERSITY_DATA['date_data_pulled']}\n")
         staking_data = MANUAL_CLIENT_DIVERSITY_DATA.get("key_staking_entity_share")
         if staking_data:
-            f.write(f"### Key Staking Entity Share\n\n")
-            f.write(f"* {staking_data['entity_name']} Share: {staking_data['share_percentage']}\n")
-            f.write(f"* {staking_data['entity_name']} Dune Link: {staking_data['source_link']}\n\n")
-            
-        # Write Consensus Client data
-        f.write(f"### Consensus Layer Client Diversity\n\n")
+            f.write(f"**Lido Share:** {staking_data['share_percentage']}\n")
+            f.write(f"**Lido Dune Link:** {staking_data['source_link']}\n")
+        
+        f.write("\n**Consensus Clients:**\n")
         for client in MANUAL_CLIENT_DIVERSITY_DATA['consensus_clients']:
-            f.write(f"* {client}\n")
-        f.write(f"_*Note: {MANUAL_CLIENT_DIVERSITY_DATA['consensus_clients_note']}*_\n\n")
-
-        # Write Execution Client data
-        f.write(f"### Execution Layer Client Diversity\n\n")
+            f.write(f"- {client}\n")
+        
+        f.write("\n**Execution Clients:**\n")
         for client in MANUAL_CLIENT_DIVERSITY_DATA['execution_clients']:
-            f.write(f"* {client}\n")
-        f.write(f"_*Note: {MANUAL_CLIENT_DIVERSITY_DATA['execution_clients_note']}*_\n\n")
+            f.write(f"- {client}\n")
+        f.write("\n\n")
 
-        # Write dynamically fetched data
-        f.write("## Recent EIP Commits (from GitHub `ethereum/EIPs`)\n\n")
-        for line_item in eips_section_commits:
-            f.write(f"- {line_item}\n")
+        # --- Write Fetched Data ---
+        f.write("## Recent EIP Updates (from GitHub `ethereum/EIPs`)\n\n")
+        for update in eip_updates:
+            f.write(f"* {update}\n")
         f.write("\n")
-
-        f.write("## Recent ERC-Related Commits (from GitHub `ethereum/EIPs`)\n\n")
-        for line_item in ercs_section_commits:
-            f.write(f"- {line_item}\n")
+        
+        f.write("## Recent ERC Updates (from GitHub `ethereum/ERCs`)\n\n")
+        for update in erc_updates:
+            f.write(f"* {update}\n")
         f.write("\n")
     
-    print(f"Context file generated with manual client diversity data: {OUTPUT_FILE}")
+    print(f"Context file generated: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
