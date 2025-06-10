@@ -1,8 +1,8 @@
-**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue** (https://weekinethereumnews.com/week-in-ethereum-news-december-21-2024/). This is a hybrid task. Your role is to follow the specific data sourcing instruction for each section below.
-            
+**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue**.Add commentMore actions
+
 **CRITICAL OVERARCHING RULE: This newsletter MUST ONLY contain information, news, and updates that have occurred or were published within the strict 7-day period concluding on the date of execution (e.g., if executed on May 25, 2025, it covers Monday, May 19, 2025, to Sunday, May 25, 2025, inclusive). Furthermore, if any defined section or category below does not have any relevant updates from this 7-day period, that entire section or category MUST be omitted from the final newsletter. Do not include sections with no new information.**
 
-The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
+The newsletter must cover **only the 7-day period concluding on the date of execution**. The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
 
@@ -20,27 +20,23 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
   * **Content:**
       * Provide summaries for any core developer calls (ACDE, ACDC, etc.) that had notes published or were discussed within the past 7 days.
-      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org`).** Check this source for any new call notes posted within the 7-day window.
+      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org/u/abcoathup/activity`).** Check this source for any new call notes posted within the 7-day window.
       * For each call summarized, **you MUST include a direct link to the specific Ethereum Magicians post** (e.g., `https://ethereum-magicians.org/t/acdc-call-123-date/xxxxx`).
       * The structure and level of detail for each call's summary should emulate how "Week in Ethereum News" typically presents these (e.g., highlighting key discussion points, decisions, and action items, often with sub-bullets for different topics discussed in the call).
       * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
   * **Primary Sources for this Section:**
-      * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/'.
+      * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity`.
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
   * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
 **2. Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
 
-  * **Content:** Report specific progress,  client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
+  * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**3. Fusaka Upgrade (Post-Pectra)**
+**3. Fusaka (Osaka + Fulu) Upgrade (or next future named upgrade after Pectra)**
 
-  * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). Also include any significant high-level discussions about the long-term Ethereum protocol roadmap.
-  * **Focus Areas**
-    * Specific Implementer & Breakout Calls: Look for and summarize notes from technical breakout sessions or implementer calls that occurred this week. Report the call number and key discussion points. Examples of calls to look for include: PeerDAS breakout calls, EOF (EVM Object Format) implementers calls, Verkle Tries implementers calls
-    * Major Research & Technology Updates: Report on significant progress, new research, or benchmark results for the core technologies being developed for future upgrades. This includes: Updates on testnets for these future features (e.g., "peerdas-devnet-X status"); Benchmark results or performance analysis (e.g., "EOF benefits for ZK proofs"); New research or major discussions on ethresear.ch related to statelessness, state management, etc; Early EIPs for Inclusion: Mention any newly proposed EIPs that are being explicitly considered for a post-Pectra upgrade.
-    * Primary Sources for this Section: ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
+  * **Content:** Report any early discussions, research, or proposed EIPs related to the next major upgrade planned after Pectra (e.g., Fusaka, or its then-current name), if such news emerged in the past 7 days.
   * **Keywords for Search:** "Fusaka upgrade," "[next\_future\_upgrade\_name] Ethereum."
 
 **4. Layer 1**
@@ -64,21 +60,13 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 **7. Centralization watch: threatening the value of your ETH**
 
   * **Content:** Provide updates and analysis related to Ethereum centralization risks. Each item should be a bullet point.
+  * **Focus:**
     * **Lido&#39;s Staking Share:** Find the &#39;Lido Share&#39; percentage from the context data you loaded. **You MUST format this into a single, specific sentence like this:** &quot;🚨 [Lido at XX.X%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd).&quot;
     * * **Client Diversity Summary:** Briefly state the approximate share of the top 1-2 execution and consensus clients using the data from the context.
     * **Mandatory Statement &amp; Formatting:**
       * **After presenting the client diversity summary, you MUST include this exact bullet point:** &quot;* Any client bug over 33.3% could mean loss of finality.&quot;
       * **Always include this exact bullet point:** &quot;* Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America &amp; Europe.&quot;
-      * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
-* **Structure:** Present this as a few focused bullet points, aiming for the style:
-        ```
-        🚨 [Lido at 28.4%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd)
-        * Client diversity (via clientdiversity.org):
-            * Execution layer: Geth ~43% & Nethermind ~36%
-            * Consensus layer: Prysm 34%
-        * Any client bug over 33.3% could mean loss of finality
-        * Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America & Europe
-        ```  
+  * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
 
 **8. Client Releases**
 
@@ -101,23 +89,17 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **10. EIPs/Standards**
 
-  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs of all categories) and any with significant status changes or active discussions from the past 7 days.Add commentMore actions
-    * Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context.
-    * **Output Structure within this Section:**
-    * The AI **MUST** group the findings into two categories: "EIPs" and "ERCs".
-    * **If and only if** there are relevant non-ERC EIP updates, present them under a label like: `EIPs (Ethereum improvement proposals):`
-        * Below this label, **each EIP update MUST be on a new line and formatted as a proper Markdown bullet point, following this exact structure: `* EIP-XXXX: [Official EIP Title]`**. A brief update note (e.g., `, moved to Final`) can be added after the title.
-    * **If and only if** there are relevant ERC updates (EIPs with `Category: ERC`), present them under a label like: `ERCs (application layer):`
-        * Below this label, **each ERC update MUST follow the same format: `* ERC-YYYY: [Official ERC Title]`**.
-    * **If a category (either non-ERC EIPs or ERCs) has no updates for the week, its label and list MUST be omitted entirely from the output.**
-* **Focus for Identification & Summarization:**
-    * For every EIP or ERC listed (whether new or updated), you MUST include its number followed by its official title.
-    * Note any status changes (e.g., moved to Final, Review, etc.) or brief descriptions of the update.
-* **Primary Sources for this Section:**
-    * `https://github.com/Ethereum/EIPs` (for all new proposals, status changes via merged PRs, and official EIP/ERC content).
-    * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
-* **Keywords for Search (Focus on monitoring `Ethereum/EIPs` repo activity):** "New EIP," "New ERC," "EIP status change," "ERC status change," "Ethereum Improvement Proposal discussion."
-  
+  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs) and application-level standards (ERCs), or those with significant status changes or active discussions in the past 7 days. Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context. Each item should be a bullet point.
+  * **Focus:**
+      * New EIPs/ERCs (identified by merged Draft PRs in `Ethereum/EIPs`).
+      * EIPs/ERCs moving to "Review," "Last Call," "Final," or "Stagnant" (identified by merged PRs reflecting these status changes in `Ethereum/EIPs`).
+      * Significant community discussions (link to `ethereum-magicians.org` or relevant GitHub Issues/PRs within the EIPs repo).
+      * Breakdowns or explanations of important or complex EIPs/ERCs.
+  * **Primary Sources for this Section:**
+      * `https://github.com/Ethereum/EIPs` (for new proposals, status changes via merged PRs, and official EIP content).
+      * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
+  * **Keywords for Search (Starting Points):** "New EIP," "ERC [number] update," "Ethereum Improvement Proposal discussion," "Ethereum Magicians EIP."
+
 **11. Developer Stuff**
 
   * **Content:** Updates on developer tools, frameworks, libraries, smart contract languages, and important resources for builders, from the past 7 days. Each item should be a bullet point.
