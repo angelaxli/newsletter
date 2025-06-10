@@ -28,7 +28,6 @@ MANUAL_CLIENT_DIVERSITY_DATA = {
         "Prysm: 30.91%",
         "Teku: 13.86%",
         "Nimbus: 8.74%",
-@@ -29,7 +33,7 @@
     ],
     "execution_clients_note": "Sourced from execution-clients.com",
     "execution_clients": [
@@ -36,7 +35,6 @@ MANUAL_CLIENT_DIVERSITY_DATA = {
         "Nethermind: 38%",
         "Besu: 16%",
         "Erigon: 3%",
-@@ -38,101 +42,79 @@
     ],
 }
 
@@ -75,45 +73,12 @@ def fetch_recent_commits(repo_path_segment):
         return [f"An unexpected error occurred fetching commits for {repo_path_segment}: {e}"]
     return commit_info_list
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     """Main function to build the context file."""
     print("Starting context build...")
 
     eips_section_commits = fetch_recent_commits("EIPs")
     ercs_section_commits = fetch_recent_commits("ERCs")
-
-
-
-
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         # Write the manually updated data
