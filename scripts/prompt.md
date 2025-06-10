@@ -1,8 +1,8 @@
-**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue**.Add commentMore actions
+**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue** (https://weekinethereumnews.com/week-in-ethereum-news-december-21-2024/).
             
 **CRITICAL OVERARCHING RULE: This newsletter MUST ONLY contain information, news, and updates that have occurred or were published within the strict 7-day period concluding on the date of execution (e.g., if executed on May 25, 2025, it covers Monday, May 19, 2025, to Sunday, May 25, 2025, inclusive). Furthermore, if any defined section or category below does not have any relevant updates from this 7-day period, that entire section or category MUST be omitted from the final newsletter. Do not include sections with no new information.**
 
-The newsletter must cover **only the 7-day period concluding on the date of execution**. The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
+The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
 
@@ -20,23 +20,27 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
   * **Content:**
       * Provide summaries for any core developer calls (ACDE, ACDC, etc.) that had notes published or were discussed within the past 7 days.
-      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org/u/abcoathup/activity`).** Check this source for any new call notes posted within the 7-day window.
+      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org`).** Check this source for any new call notes posted within the 7-day window.
       * For each call summarized, **you MUST include a direct link to the specific Ethereum Magicians post** (e.g., `https://ethereum-magicians.org/t/acdc-call-123-date/xxxxx`).
       * The structure and level of detail for each call's summary should emulate how "Week in Ethereum News" typically presents these (e.g., highlighting key discussion points, decisions, and action items, often with sub-bullets for different topics discussed in the call).
       * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
   * **Primary Sources for this Section:**
-      * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity`.
+      * Call Summaries: Posts found here 'https://ethereum-magicians.org/u/abcoathup/activity` ("by `@abcoathup` on `https://ethereum-magicians.org/').
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
   * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
 **2. Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
 
-  * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
+  * **Content:** Report specific progress,  client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**3. Fusaka (Osaka + Fulu) Upgrade (or next future named upgrade after Pectra)**
+**3. Future Protocol Upgrade (Post-Pectra)**
 
-  * **Content:** Report any early discussions, research, or proposed EIPs related to the next major upgrade planned after Pectra (e.g., Fusaka, or its then-current name), if such news emerged in the past 7 days.
+  * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). Also include any significant high-level discussions about the long-term Ethereum protocol roadmap.
+  * **Focus Areas**
+    * Specific Implementer & Breakout Calls: Look for and summarize notes from technical breakout sessions or implementer calls that occurred this week. Report the call number and key discussion points. Examples of calls to look for include: PeerDAS breakout calls, EOF (EVM Object Format) implementers calls, Verkle Tries implementers calls
+    * Major Research & Technology Updates: Report on significant progress, new research, or benchmark results for the core technologies being developed for future upgrades. This includes: Updates on testnets for these future features (e.g., "peerdas-devnet-X status"); Benchmark results or performance analysis (e.g., "EOF benefits for ZK proofs"); New research or major discussions on ethresear.ch related to statelessness, state management, etc; Early EIPs for Inclusion: Mention any newly proposed EIPs that are being explicitly considered for a post-Pectra upgrade.
+    * Primary Sources for this Section: ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
   * **Keywords for Search:** "Fusaka upgrade," "[next\_future\_upgrade\_name] Ethereum."
 
 **4. Layer 1**
