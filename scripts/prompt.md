@@ -1,4 +1,4 @@
-**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue** (https://weekinethereumnews.com/week-in-ethereum-news-december-21-2024/).
+**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue** (https://weekinethereumnews.com/week-in-ethereum-news-december-21-2024/). This is a hybrid task. Your role is to follow the specific data sourcing instruction for each section below.
             
 **CRITICAL OVERARCHING RULE: This newsletter MUST ONLY contain information, news, and updates that have occurred or were published within the strict 7-day period concluding on the date of execution (e.g., if executed on May 25, 2025, it covers Monday, May 19, 2025, to Sunday, May 25, 2025, inclusive). Furthermore, if any defined section or category below does not have any relevant updates from this 7-day period, that entire section or category MUST be omitted from the final newsletter. Do not include sections with no new information.**
 
@@ -101,11 +101,11 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **10. EIPs/Standards**
 
-  * **Content:** Your task for this section is to process and format the lists of EIP and ERC updates provided to you in the `scripts/prompt_context.md` file, which you have been instructed to load. **Do not browse the web for this information.**
+  * **Content:** Your task for this section is to process and format the lists of EIP and ERC updates provided to you in the `scripts/prompt_context.md` file, which you have been instructed to load. 
   * **Output Structure:**
-    * **First, look for a heading like "Recent EIP Updates" in the context data.** If it exists and has content, create a sub-heading `EIPs (Ethereum improvement proposals):`.
+    * **Find the heading "Recent EIP Updates" in the context data.** Create a sub-heading `EIPs (Ethereum improvement proposals):`.
         * For each item listed in the context, find the EIP number and its official title (by looking up the EIP number on `eips.ethereum.org` if necessary) and format it exactly as: `* EIPXXXX: [Official EIP Title]`.
-    * **Second, look for a heading like "Recent ERC Updates" in the context data.** If it exists and has content, create a sub-heading `ERCs (application layer):`.
+    * **Find the heading"Recent ERC Updates" in the context data.**  Create a sub-heading `ERCs (application layer):`.
         * For each item listed in the context, find the ERC number and its official title and format it exactly as: `* ERCYYYY: [Official ERC Title]`.
     * **If a category is not present in the context data, its sub-heading MUST be omitted entirely.**
 
