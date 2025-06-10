@@ -101,14 +101,23 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **10. EIPs/Standards**
 
-  * **Content:** Provide updates related to EIPs/Standards. Each item should be a bullet point.
-  * **Output Structure:**
-    * **EIPs (Ethereum improvement proposals)** Find Recent EIP Updates from the context data you loaded.
-        * For each item listed in the context, find the EIP number and its official title (by looking up the EIP number on `eips.ethereum.org` if necessary) and format it exactly as: `* EIPXXXX: [Official EIP Title]`.
-    * **ERCs (application layer):** Find Recent ERC Updates from the context data you loaded.
-        * For each item listed in the context, find the ERC number and its official title and format it exactly as: `* ERCYYYY: [Official ERC Title]`.
-    * **If a category is not present in the context data, its sub-heading MUST be omitted entirely.**
-
+  * **Content:** Summarize newly introduced Ethereum Improvement Proposals (EIPs of all categories) and any with significant status changes or active discussions from the past 7 days.Add commentMore actions
+    * Information **MUST be primarily sourced by monitoring activity (new PRs for Drafts, merged PRs for status changes) directly from the official `https://github.com/Ethereum/EIPs` repository.** Use `https://ethereum-magicians.org` for supplementary discussion context.
+    * **Output Structure within this Section:**
+    * The AI **MUST** group the findings into two categories: "EIPs" and "ERCs".
+    * **If and only if** there are relevant non-ERC EIP updates, present them under a label like: `EIPs (Ethereum improvement proposals):`
+        * Below this label, **each EIP update MUST be on a new line and formatted as a proper Markdown bullet point, following this exact structure: `* EIP-XXXX: [Official EIP Title]`**. A brief update note (e.g., `, moved to Final`) can be added after the title.
+    * **If and only if** there are relevant ERC updates (EIPs with `Category: ERC`), present them under a label like: `ERCs (application layer):`
+        * Below this label, **each ERC update MUST follow the same format: `* ERC-YYYY: [Official ERC Title]`**.
+    * **If a category (either non-ERC EIPs or ERCs) has no updates for the week, its label and list MUST be omitted entirely from the output.**
+* **Focus for Identification & Summarization:**
+    * For every EIP or ERC listed (whether new or updated), you MUST include its number followed by its official title.
+    * Note any status changes (e.g., moved to Final, Review, etc.) or brief descriptions of the update.
+* **Primary Sources for this Section:**
+    * `https://github.com/Ethereum/EIPs` (for all new proposals, status changes via merged PRs, and official EIP/ERC content).
+    * `https://ethereum-magicians.org` (for community discussions and context around EIPs/ERCs).
+* **Keywords for Search (Focus on monitoring `Ethereum/EIPs` repo activity):** "New EIP," "New ERC," "EIP status change," "ERC status change," "Ethereum Improvement Proposal discussion."
+  
 **11. Developer Stuff**
 
   * **Content:** Updates on developer tools, frameworks, libraries, smart contract languages, and important resources for builders, from the past 7 days. Each item should be a bullet point.
