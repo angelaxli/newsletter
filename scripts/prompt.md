@@ -25,7 +25,7 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
       * The structure and level of detail for each call's summary should emulate how "Week in Ethereum News" typically presents these (e.g., highlighting key discussion points, decisions, and action items, often with sub-bullets for different topics discussed in the call).
       * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
   * **Primary Sources for this Section:**
-      * Call Summaries: Posts found here 'https://ethereum-magicians.org/u/abcoathup/activity` ("by `@abcoathup` on `https://ethereum-magicians.org/').
+      * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/'.
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
   * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
@@ -34,7 +34,7 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
   * **Content:** Report specific progress,  client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**3. Future Protocol Upgrade (Post-Pectra)**
+**3. Fusaka Upgrade (Post-Pectra)**
 
   * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). Also include any significant high-level discussions about the long-term Ethereum protocol roadmap.
   * **Focus Areas**
