@@ -101,11 +101,11 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **10. EIPs/Standards**
 
-  * **Content:** Your task for this section is to process and format the lists of EIP and ERC updates provided to you in the `scripts/prompt_context.md` file, which you have been instructed to load. 
+  * **Content:** Provide updates related to EIPs/Standards. Each item should be a bullet point.
   * **Output Structure:**
-    * **Find the heading "Recent EIP Updates" in the context data.** Create a sub-heading `EIPs (Ethereum improvement proposals):`.
+    * **EIPs (Ethereum improvement proposals)** Find Recent EIP Updates from the context data you loaded.
         * For each item listed in the context, find the EIP number and its official title (by looking up the EIP number on `eips.ethereum.org` if necessary) and format it exactly as: `* EIPXXXX: [Official EIP Title]`.
-    * **Find the heading"Recent ERC Updates" in the context data.**  Create a sub-heading `ERCs (application layer):`.
+    * **ERCs (application layer):** Find Recent ERC Updates from the context data you loaded.
         * For each item listed in the context, find the ERC number and its official title and format it exactly as: `* ERCYYYY: [Official ERC Title]`.
     * **If a category is not present in the context data, its sub-heading MUST be omitted entirely.**
 
@@ -208,7 +208,6 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **General AI Instructions:**
 
-  * **Source of Truth by Section:** This is a hybrid task. For some sections, you must perform live web research. For others ("EIPs/Standards", "Centralization watch"), you must use only the data provided in the context file. Adhere strictly to the source instructions for each section.
   * **Strict Date Adherence:** All reported news, updates, and highlights **MUST originate from events, publications, or data released strictly within the specified 7-day period.** No exceptions. If an event is recurring, only report on the instance that happened in the past 7 days.
   * **Primary Information Sources & Verification:**
       * **Core Ethereum Development & Discussion (Highest Priority):** Your primary sources for core protocol developments, EIP discussions, research, and official meeting notes MUST be:
