@@ -208,6 +208,7 @@ The AI must emphasize clarity, **absolute factual accuracy, verifiable timelines
 
 **General AI Instructions:**
 
+  * **Source of Truth by Section:** This is a hybrid task. For some sections, you must perform live web research. For others ("EIPs/Standards", "Centralization watch"), you must use only the data provided in the context file. Adhere strictly to the source instructions for each section.
   * **Strict Date Adherence:** All reported news, updates, and highlights **MUST originate from events, publications, or data released strictly within the specified 7-day period.** No exceptions. If an event is recurring, only report on the instance that happened in the past 7 days.
   * **Primary Information Sources & Verification:**
       * **Core Ethereum Development & Discussion (Highest Priority):** Your primary sources for core protocol developments, EIP discussions, research, and official meeting notes MUST be:
