@@ -34,10 +34,20 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**3. Fusaka (Osaka + Fulu) Upgrade (or next future named upgrade after Pectra)**
+**3. Future Protocol Upgrade (Post-Pectra)**
 
-  * **Content:** Report any early discussions, research, or proposed EIPs related to the next major upgrade planned after Pectra (e.g., Fusaka, or its then-current name), if such news emerged in the past 7 days.
-  * **Keywords for Search:** "Fusaka upgrade," "[next\_future\_upgrade\_name] Ethereum."
+  * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). Do not  list EIPs in this section; instead, focus on the developments around the core technologies being built for future upgrades.
+  * **Focus Areas to Investigate & Report On** "
+    * **Specific Implementer & Breakout Calls:** Actively look for and summarize notes from technical breakout sessions or implementer calls that occurred this week. Report the call number and key discussion points. Examples of calls to look for include:
+       * PeerDAS breakout calls
+       * EOF (EVM Object Format) implementers calls
+       * Verkle Tries implementers calls
+   * **Major Research & Technology Updates:** Report on significant progress, new research, or benchmark results for the core technologies being developed for future upgrades. This includes:
+       * Updates on testnets for these future features (e.g., "peerdas-devnet-X status").
+       * Benchmark results or performance analysis (e.g., "EOF benefits for ZK proofs").
+       * New research or major discussions on ethresear.ch related to statelessness, state management, etc.
+* **Primary Sources for this Section:** ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
+* **Keywords for Search:** "PeerDAS breakout call," "EOF implementers call," "Verkle Tries Ethereum," "Ethereum statelessness research," "peerdas-devnet," "Ethereum protocol roadmap."
 
 **4. Layer 1**
 
