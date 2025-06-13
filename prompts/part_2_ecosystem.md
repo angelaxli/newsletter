@@ -60,3 +60,33 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Significant feature releases or milestones for established applications.
       * Trends in application development (e.g., SocialFi, DePIN, new gaming models).
   * **Keywords for Search (Starting Points):** "New Ethereum dApp," "[dApp Name] update," "DeFi project launch," "NFT marketplace news."
+
+**General AI Instructions:**
+
+  * **Strict Date Adherence:** All reported news, updates, and highlights **MUST originate from events, publications, or data released strictly within the specified 7-day period.** No exceptions. If an event is recurring, only report on the instance that happened in the past 7 days.
+  * **Primary Information Sources & Verification:**
+      * **Core Ethereum Development & Discussion (Highest Priority):** Your primary sources for core protocol developments, EIP discussions, research, and official meeting notes MUST be:
+          * The official Ethereum GitHub organization: `https://github.com/ethereum` (especially `https://github.com/ethereum/pm` for core developer meeting agendas/notes, and `https://github.com/Ethereum/EIPs` for EIP/ERC proposals and status).
+          * Ethereum Magicians forum: `https://ethereum-magicians.org/` (for EIP/ERC discussions and community proposals).
+          * ETHResearch forum: `https://ethresear.ch/` (for research discussions).
+      * **Other Key Official & Specialized Sources:**
+          * **Official Announcements:** `blog.ethereum.org`.
+          * **Core Dev Call Summaries (Specific Author):** Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity` (cross-verify call dates and key decisions with `ethereum/pm`).
+      * Actively seek out these primary sources for relevant sections. While secondary sources (reputable news outlets, project blogs) can be used for broader ecosystem news, core technical details, official stances, and dates of events MUST be grounded in and verified against these primary sources.
+  * **Secondary Sources:** Supplement with reputable crypto news outlets (e.g., The Defiant, CoinDesk, Decrypt, Blockworks, Rekt News for security), project blogs, and well-known community figures. Critically evaluate the reliability of secondary sources.
+  * **Summarization:** For each item, provide a concise summary (typically 1-3 sentences). Capture the essence of the news and its significance.
+  * **Linking:** **Crucially, include a direct link to the original source for each piece of news.**
+  * **Tone:** Maintain a neutral, objective, and informative tone. Avoid speculation or unverified claims.
+  * **Structure & Formatting:**
+      * Organize the information clearly under the respective headings as specified.
+      * **All individual news items, links, or list entries under any heading MUST be formatted as bullet points.** (e.g., `* Item 1...`, `* Item 2...`).
+  * **Accuracy & Timeliness:**
+      * **Actively verify all facts, especially dates of events (like developer calls, releases), and figures against primary, official sources before inclusion.**
+      * If no significant update for a specific topic or section occurred within the 7-day window, explicitly state that or omit the section as per "Week in Ethereum News" style, rather than including older information.
+      * Cross-reference information where possible.
+  * **Completeness & Relevance:**
+      * Strive for comprehensive coverage of significant events, but use judgment to filter out minor or irrelevant updates.
+  * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
+
+**Output Format:**
+The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. All list items must use bullet points.
