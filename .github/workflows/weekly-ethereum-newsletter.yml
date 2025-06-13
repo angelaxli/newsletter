@@ -34,19 +34,46 @@ jobs:
 
       - name: Print context contents
         run: cat scripts/prompt_context.md
-
-      - name: Generate Ethereum Newsletter via OpenHands
+      
+      - name: Generate Part 1 - Core Protocol
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
-          prompt: >- 
-            Read scripts/prompt.md from the root of the repository and use 
-            it to generate a newsletter.
-            Your structured context data is located at 'scripts/prompt_context.md' in your workspace.
-            Please read this file to obtain the structured context data.
-            Use date range: past 7 days
-            Save the result to: newsletter_${{ env.TIMESTAMP }}.md
-  
+          prompt: |
+            Read 'prompts/part_1_core_protocol.md' and use it to generate the core protocol sections.
+            Save the result to: part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
+
+      - name: Generate Part 2 - Ecosystem & App Layer
+        uses: xinbenlv/openhands-action@v1.0.1-rc3
+        with:
+          prompt: |
+            Read 'prompts/part_2_ecosystem.md' and use it to generate the ecosystem sections.
+            Save the result to: part_2_output.md
+          llm_api_key: ${{ secrets.LLM_API_KEY }}
+
+      - name: Generate Part 3 - Data-Driven & General Info
+        uses: xinbenlv/openhands-action@v1.0.1-rc3
+        with:
+          prompt: |
+            Read 'prompts/part_3_data_general.md'. Your context data is in 'scripts/prompt_context.md'.
+            Use it to generate the data-driven sections. Save the result to: part_3_output.md
+          context: scripts/prompt_context.md
+          llm_api_key: ${{ secrets.LLM_API_KEY }}
+
+      # --- COMBINE AND SEND ---
+
+      - name: Combine Newsletter Sections
+        run: |
+          TIMESTAMP=$(date -u +"%B %d, %Y")
+          echo "## Week in Ethereum News" > final_newsletter.md
+          echo "### $TIMESTAMP" >> final_newsletter.md
+          echo "" >> final_newsletter.md
+          
+          # Concatenate the output files from each part
+          cat part_1_output.md part_2_output.md part_3_output.md >> final_newsletter.md
+          
+          echo "--- Final Combined Newsletter ---"
+          cat final_newsletter.md
       
       - name: Debug Workspace Contents Before Artifact Upload
         run: |
