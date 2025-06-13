@@ -51,7 +51,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 **4. Layer 1**
   * **Source of Information:** You must actively browse the web for this information, focusing on ethresear.ch, github.com/ethereum/pm, ethereum-magicians.org, and relevant researcher/developer posts on platforms like X (formerly Twitter) or personal blogs.
-  * **Content:** Content: Based on developments from the past 7 days, report on significant Layer 1 protocol discussions, research, and technical developments that are not part of a major named upgrade (like Pectra or Fusaka). Crucially, your goal here is to report on specific technical discussions and research updates. Do NOT list EIPs or their status changes in this section; that information belongs in the dedicated 'EIPs/Standards' section.
+  * **Content:** Based on developments from the past 7 days, report on significant Layer 1 protocol discussions, research, and technical developments that are not part of a major named upgrade (like Pectra or Fusaka). Crucially, your goal here is to report on specific technical discussions and research updates. Do NOT list EIPs or their status changes in this section; that information belongs in the dedicated 'EIPs/Standards' section.
   * **Focus Areas to Investigate & Report On:**
      * **Gas Limit, Fees, and Data Availability:**
         * Look for discussions or proposals regarding the gas limit, including any notable entities signaling for an increase (e.g., using a signaling dashboard).
@@ -61,7 +61,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
         * Summarize any discussions on inclusion list design, such as comparisons between same-slot vs. next-slot proposals.
     * **Networking Layer:**
         * Report on the status of QUIC support adoption across the network, including any available statistics on node distribution.
-    * Block Building & MEV Infrastructure:
+    * **Block Building & MEV Infrastructure**:
         * Look for news about new or updated block building networks (e.g., BuilderNet) or infrastructure related to MEV that aims to benefit users or stakers.
     * **Specific EIP Breakout Calls:**
         * Summarize notes from any specific breakout calls for EIPs that are related to L1 but not yet scheduled for a specific upgrade (e.g., ePBS breakout calls). Report the call number and key discussion points. Note: This is for summarizing the call's content, not for reporting the EIP's status.
