@@ -89,7 +89,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * **After presenting the client diversity summary, you MUST include this exact bullet point:** &quot;* Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America &amp; Europe.&quot;
   * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
 
-**8. Client Releases**
+**7. Client Releases**
 
   * **Source of Information:** You must actively browse the web for this information. Your primary sources are the official GitHub release pages for each Ethereum client.
   * **Content:** Based on releases from the past 7 days, provide a comprehensive list of client updates.
