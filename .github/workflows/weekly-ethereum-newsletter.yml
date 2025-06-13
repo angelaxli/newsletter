@@ -40,7 +40,7 @@ jobs:
         with:
           prompt: |
             Read 'prompts/part_1_core_protocol.md' and use it to generate the core protocol sections.
-            Save the result to: part_1_output.md
+            Save the result to: ${{ github.workspace }}/part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       - name: Generate Part 2 - Ecosystem & App Layer
@@ -48,7 +48,7 @@ jobs:
         with:
           prompt: |
             Read 'prompts/part_2_ecosystem.md' and use it to generate the ecosystem sections.
-            Save the result to: part_2_output.md
+            Save the result to: ${{ github.workspace }}/part_2_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       - name: Generate Part 3 - Data-Driven & General Info
@@ -56,24 +56,30 @@ jobs:
         with:
           prompt: |
             Read 'prompts/part_3_data_general.md'. Your context data is in 'scripts/prompt_context.md'.
-            Use it to generate the data-driven sections. Save the result to: part_3_output.md
+            Use it to generate the data-driven sections. Save the result to: ${{ github.workspace }}/part_3_output.md
           context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
       # --- COMBINE AND SEND ---
 
       - name: Combine Newsletter Sections
+        id: combine_step
         run: |
+          # Define the absolute path for the final newsletter file
+          FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+
+          # Create the final newsletter file with a header
           TIMESTAMP=$(date -u +"%B %d, %Y")
-          echo "## Week in Ethereum News" > final_newsletter.md
-          echo "### $TIMESTAMP" >> final_newsletter.md
-          echo "" >> final_newsletter.md
+          echo "## Week in Ethereum News" > "$FINAL_FILE"
+          echo "### $TIMESTAMP" >> "$FINAL_FILE"
+          echo "" >> "$FINAL_FILE"
           
-          # Concatenate the output files from each part
-          cat part_1_output.md part_2_output.md part_3_output.md >> final_newsletter.md
+          # Use find within the workspace to get all part_*.md files and sort them alphabetically
+          find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
           
           echo "--- Final Combined Newsletter ---"
-          cat final_newsletter.md
+          cat "$FINAL_FILE"
+          echo "---------------------------------"
       
       - name: Debug Workspace Contents Before Artifact Upload
         run: |
@@ -103,22 +109,10 @@ jobs:
           
       - name: Install dependencies round 2
         run: pip install resend markdown2
-
-      - name: Send Ethereum Newsletter via Resend
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
-          TIMESTAMP: ${{ env.TIMESTAMP }}
+        
+      - name: Send Newsletter via Resend
         run: |
-          # Find the latest generated newsletter file
-          ls -la  # 🔍 Add this to log the current directory and all files
-
-          FILE=$(ls newsletter_*.md 2>/dev/null | tail -n 1)
-
-          if [ -z "$FILE" ]; then
-            echo "❌ No newsletter file found in current directory."
-            exit 1
-          fi
-
-          echo "✅ Using $FILE"
-          python scripts/send_newsletter.py "$FILE"
+          python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
+        env:
+          NEWSLETTER_RECIPIENT: 226angelli@gmail.com
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
