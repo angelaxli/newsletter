@@ -68,14 +68,14 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Keywords for Search:** "Ethereum gas limit," "Data Always Ethereum," "inclusion list design," "QUIC Ethereum," "BuilderNet," "ePBS breakout," "EVMMAX implementers call."
 
 **5. Centralization watch: threatening the value of your ETH**
-
-  * **Content:** Provide updates and analysis related to Ethereum centralization risks. Each item should be a bullet point.
-  * **Focus:**
-    * **Lido&#39;s Staking Share:** Find the &#39;Lido Share&#39; percentage from the context data you loaded. **You MUST format this into a single, specific sentence like this:** &quot;🚨 [Lido at XX.X%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd).&quot;
-    * * **Client Diversity Summary:** Briefly state the approximate share of the top 1-2 execution and consensus clients using the data from the context.
-    * **Mandatory Statement &amp; Formatting:**
-      * **After presenting the client diversity summary, you MUST include this exact bullet point:** &quot;* Any client bug over 33.3% could mean loss of finality.&quot;
-      * **Always include this exact bullet point:** &quot;* Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America &amp; Europe.&quot;
+  * **Content & Formatting Instructions:**
+      * **Lido&#39;s Staking Share:** Find the &#39;Lido Share&#39; percentage from the context data you loaded. **You MUST format this into a single, specific sentence like this:** &quot;🚨 [Lido at XX.X%](https://dune.com/hildobby/eth2-staking), still too close to the [33.3% threshold](https://notes.ethereum.org/@djrtwo/risks-of-lsd).&quot;
+      * **Client Diversity Summary:** Following the Lido line, you MUST create a main bullet point formatted exactly as: Client diversity (via clientdiversity.org):.
+        * Under this main bullet point, you MUST create three nested bullet points:
+            * One for the execution layer, summarizing the top 1-2 clients (e.g., * Execution layer: Geth ~XX% & Nethermind ~YY%).
+            * One for the consensus layer, summarizing the top 1-2 clients (e.g., * Consensus layer: Prysm XX%).
+            * You MUST include this exact bullet point as plain text: * Any client bug over 33.3% could mean loss of finality.
+      * **After presenting the client diversity summary, you MUST include this exact bullet point:** &quot;* Better [geographic diversity](https://nodewatch.io/) is optimal, particularly outside of North America &amp; Europe.&quot;
   * **Sourcing Client Percentages:** For any specific client diversity percentages mentioned, YOU MUST use the data provided in the &#39;Manually Updated Client Diversity Data&#39; section which you have loaded from `scripts/prompt_context.md`. Attribute the source as specified in your context data. Do not attempt to scrape this data from the web yourself.
 
 **General AI Instructions:**
