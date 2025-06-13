@@ -67,7 +67,16 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
         * Summarize notes from any specific breakout calls for EIPs that are related to L1 but not yet scheduled for a specific upgrade (e.g., ePBS breakout calls). Report the call number and key discussion points. Note: This is for summarizing the call's content, not for reporting the EIP's status.
   * **Keywords for Search:** "Ethereum gas limit," "Data Always Ethereum," "inclusion list design," "QUIC Ethereum," "BuilderNet," "ePBS breakout," "EVMMAX implementers call."
 
-**5. Centralization watch: threatening the value of your ETH**
+**5. Research**
+
+  * **Source of Information:** You must actively browse ethresear.ch and other relevant sources (e.g., researcher blogs, academic papers) for this information.
+  * **Content:** Based on developments from the past 7 days, identify and report on the most significant research topics, new posts, and active discussions. Your goal is to capture the most important research developments, whatever they may be.
+  * **Output Structure:**
+    * For each distinct major topic or thread you find, create a main bullet point to act as a thematic heading (e.g., * [Theme of Research]:).
+    * Under each topic, create one or more nested bullet points summarizing the specific research paper, proposal, or discussion.
+  * **Keywords for Search:**  "ethresear.ch," "Ethereum research."
+
+**6. Centralization watch: threatening the value of your ETH**
 
   * **Content:** Provide updates and analysis related to Ethereum centralization risks. Each item should be a bullet point.
   * **Focus:**
