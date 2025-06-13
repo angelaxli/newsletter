@@ -14,7 +14,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 -----
 
-## **Core Protocol & Research News Sections:** *(The following numbered sections 1-6 are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
+## **Core Protocol & Research News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
 **1. Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
 
@@ -46,8 +46,27 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
        * Updates on testnets for these future features (e.g., "peerdas-devnet-X status").
        * Benchmark results or performance analysis (e.g., "EOF benefits for ZK proofs").
        * New research or major discussions on ethresear.ch related to statelessness, state management, etc.
-* **Primary Sources for this Section:** ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
-* **Keywords for Search:** "PeerDAS breakout call," "EOF implementers call," "Verkle Tries Ethereum," "Ethereum statelessness research," "peerdas-devnet," "Ethereum protocol roadmap."
+  * **Primary Sources for this Section:** ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
+  * **Keywords for Search:** "PeerDAS breakout call," "EOF implementers call," "Verkle Tries Ethereum," "Ethereum statelessness research," "peerdas-devnet," "Ethereum protocol roadmap."
+
+**4. Layer 1**
+  * **Source of Information:** You must actively browse the web for this information, focusing on ethresear.ch, github.com/ethereum/pm, ethereum-magicians.org, and relevant researcher/developer posts on platforms like X (formerly Twitter) or personal blogs.
+  * **Content:** Based on developments from the past 7 days, report on significant Layer 1 protocol discussions, research, and technical developments that are not part of a major named upgrade (like Pectra or Fusaka).
+  * **Focus Areas to Investigate & Report On:**
+     * **Gas Limit, Fees, and Data Availability:**
+        * Look for discussions or proposals regarding the gas limit, including any notable entities signaling for an increase (e.g., using a signaling dashboard).
+        * Report on research related to bandwidth availability and its implications for blob count or block size.
+    * Data & Censorship Resistance:
+        * Find updates on topics like "Data Always" or discussions about the role of MEV-Boost relays in network stability and reorgs.
+        * Summarize any discussions on inclusion list design, such as comparisons between same-slot vs. next-slot proposals.
+    * **Networking Layer:**
+        * Report on the status of QUIC support adoption across the network, including any available statistics on node distribution.
+    * Block Building & MEV Infrastructure:
+        * Look for news about new or updated block building networks (e.g., BuilderNet) or infrastructure related to MEV that aims to benefit users or stakers.
+    * **Specific EIP Breakout Calls:**
+        * Summarize notes from any specific breakout calls for EIPs that are related to L1 but not yet scheduled for a specific upgrade (e.g., ePBS breakout calls). Report the call number and key discussion points.
+  * **Keywords for Search:** "Ethereum gas limit," "Data Always Ethereum," "inclusion list design," "QUIC Ethereum," "BuilderNet," "ePBS breakout," "EVMMAX implementers call."
+
 
 **General AI Instructions:**
 
@@ -60,7 +79,6 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * **Other Key Official & Specialized Sources:**
           * **Official Announcements:** `blog.ethereum.org`.
           * **Core Dev Call Summaries (Specific Author):** Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity` (cross-verify call dates and key decisions with `ethereum/pm`).
-          * **Client Diversity Data:** `clientdiversity.org`.
       * Actively seek out these primary sources for relevant sections. While secondary sources (reputable news outlets, project blogs) can be used for broader ecosystem news, core technical details, official stances, and dates of events MUST be grounded in and verified against these primary sources.
   * **Secondary Sources:** Supplement with reputable crypto news outlets (e.g., The Defiant, CoinDesk, Decrypt, Blockworks, Rekt News for security), project blogs, and well-known community figures. Critically evaluate the reliability of secondary sources.
   * **Summarization:** For each item, provide a concise summary (typically 1-3 sentences). Capture the essence of the news and its significance.
@@ -75,7 +93,6 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Cross-reference information where possible.
   * **Completeness & Relevance:**
       * Strive for comprehensive coverage of significant events, but use judgment to filter out minor or irrelevant updates.
-      * **Crucially, ALL sections (0-20) should ONLY be included in the output if there were relevant updates for them in the past 7 days.** If a section has no significant news for the week, it should be omitted entirely to match the lean style of "Week in Ethereum News."
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
 **Output Format:**
