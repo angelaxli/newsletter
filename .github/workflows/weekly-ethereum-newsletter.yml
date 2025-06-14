@@ -23,143 +23,83 @@ jobs:
       - name: Generate timestamp
         id: generate-timestamp
         run: echo "TIMESTAMP=$(date +'%Y%m%d')" >> $GITHUB_ENV
-      
-      - name: Install dependencies
+
+      - name: Install Python and requirements
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      
+
       - name: Build Prompt Context (last 7 days)
         run: python scripts/build_prompt_context.py
 
-      - name: Print context contents
+      - name: Print context
         run: cat scripts/prompt_context.md
 
-      # --- GENERATE SECTIONS INDIVIDUALLY ---
-
-      - name: Generate Part 1 - Core Protocol
-        id: generate_part_1
+      - name: Generate first Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
+        env:
+          TIMESTAMP: ${{ env.TIMESTAMP }}
         with:
-          prompt: |
-            Read 'prompts/part_1_core_protocol.md' and use it to generate the core protocol sections.
-            Save the result to: ${{ github.workspace }}/part_1_output.md
+          prompt_file: "prompts/prompt_1.md"
           llm_api_key: ${{ secrets.LLM_API_KEY }}
+          output_file: "section1_${{ env.TIMESTAMP }}.md"
 
-      - name: Validate Part 1 Output
-        run: |
-          if [ ! -f "${{ github.workspace }}/part_1_output.md" ]; then
-            echo "::error::Failed to generate Part 1 output file."
-            exit 1
-          fi
-          echo "✅ Part 1 output file created successfully."
-
-      - name: Generate Part 2 - Ecosystem & App Layer
-        id: generate_part_2
+      - name: Generate second Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
+        env:
+          TIMESTAMP: ${{ env.TIMESTAMP }}
         with:
-          prompt: |
-            Read 'prompts/part_2_ecosystem.md' and use it to generate the ecosystem sections.
-            Save the result to: ${{ github.workspace }}/part_2_output.md
+          prompt_file: "prompts/prompt_2.md"
           llm_api_key: ${{ secrets.LLM_API_KEY }}
+          output_file: "section2_${{ env.TIMESTAMP }}.md"
 
-      - name: Validate Part 2 Output
-        run: |
-          if [ ! -f "${{ github.workspace }}/part_2_output.md" ]; then
-            echo "::error::Failed to generate Part 2 output file."
-            exit 1
-          fi
-          echo "✅ Part 2 output file created successfully."
-
-      - name: Generate Part 3 - Data-Driven & General Info
-        id: generate_part_3
+      - name: Generate third Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
+        env:
+          TIMESTAMP: ${{ env.TIMESTAMP }}
         with:
-          prompt: |
-            Read 'prompts/part_3_data_general.md'. Your context data is in 'scripts/prompt_context.md'.
-            Use it to generate the data-driven sections. Save the result to: ${{ github.workspace }}/part_3_output.md
-          context: scripts/prompt_context.md
+          prompt_file: "prompts/prompt_3.md"
           llm_api_key: ${{ secrets.LLM_API_KEY }}
-          
-      - name: Validate Part 3 Output
+          output_file: "section3_${{ env.TIMESTAMP }}.md"
+
+      - name: Combine files into a single newsletter
         run: |
-          if [ ! -f "${{ github.workspace }}/part_3_output.md" ]; then
-            echo "::error::Failed to generate Part 3 output file."
-            exit 1
-          fi
-          echo "✅ Part 3 output file created successfully."
+          echo "# Section 1" > combined_newsletter_${{ env.TIMESTAMP }}.md
+          cat section1_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
 
-      # --- COMBINE AND SEND ---
+          echo -e "\n# Section 2" >> combined_newsletter_${{ env.TIMESTAMP }}.md
+          cat section2_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
 
-      - name: Combine Newsletter Sections
-        id: combine_step
-        run: |
-          sudo bash -c '
-            FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
-            TIMESTAMP=$(date -u +"%B %d, %Y")
+          echo -e "\n# Section 3" >> combined_newsletter_${{ env.TIMESTAMP }}.md
+          cat section3_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
 
-            echo "Creating final newsletter file at $FINAL_FILE"
-            # Create the final newsletter file with a header
-            echo "## Week in Ethereum News" > "$FINAL_FILE"
-            echo "### $TIMESTAMP" >> "$FINAL_FILE"
-            echo "" >> "$FINAL_FILE"
-            
-            # --- Verbose Combination Logic ---
-            echo "Checking for partial files..."
-            PART_1_FILE="${{ github.workspace }}/part_1_output.md"
-            PART_2_FILE="${{ github.workspace }}/part_2_output.md"
-            PART_3_FILE="${{ github.workspace }}/part_3_output.md"
-            
-            if [ -f "$PART_1_FILE" ]; then
-              echo "✅ Found Part 1. Appending to final newsletter."
-              cat "$PART_1_FILE" >> "$FINAL_FILE"
-              echo -e "\n" >> "$FINAL_FILE"
-            else
-              echo "❌ WARNING: Part 1 file not found at $PART_1_FILE"
-            fi
-            
-            if [ -f "$PART_2_FILE" ]; then
-              echo "✅ Found Part 2. Appending to final newsletter."
-              cat "$PART_2_FILE" >> "$FINAL_FILE"
-              echo -e "\n" >> "$FINAL_FILE"
-            else
-              echo "❌ WARNING: Part 2 file not found at $PART_2_FILE"
-            fi
-            
-            if [ -f "$PART_3_FILE" ]; then
-              echo "✅ Found Part 3. Appending to final newsletter."
-              cat "$PART_3_FILE" >> "$FINAL_FILE"
-              echo -e "\n" >> "$FINAL_FILE"
-            else
-              echo "❌ WARNING: Part 3 file not found at $PART_3_FILE"
-            fi
-            
-            echo "--- Final Combined Newsletter ---"
-            cat "$FINAL_FILE"
-            echo "---------------------------------"
-
-            # Final check to ensure the file is not just a header
-            # Count lines, if less than 5 (header + timestamp + blank line + maybe one content line), fail.
-            if [ $(wc -l < "$FINAL_FILE") -lt 5 ]; then
-              echo "::error::Final newsletter file is nearly empty. Halting workflow to prevent sending a blank email."
-              exit 1
-            fi
-          '
+      - name: Upload combined newsletter
+        uses: actions/upload-artifact@v4
+        with:
+          name: combined-newsletter
+          path: combined_newsletter_*.md
+          retention-days: 14
+          if-no-files-found: warn
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
-      - name: Install dependencies round 2
-        run: pip install resend markdown2
-        
 
-      - name: Send Newsletter via Resend
-        run: |
-          # Your send script now uses the combined file with an absolute path
-          # It can read the file even if it's owned by root.
-          python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
+      - name: Install resend and markdown2
+        run: pip install resend markdown2
+
+      - name: Send combined newsletter via Resend
         env:
-          NEWSLETTER_RECIPIENT: 226angelli@gmail.com
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
+          TIMESTAMP: ${{ env.TIMESTAMP }}
+        run: |
+          FILE=combined_newsletter_${TIMESTAMP}.md
+          if [ -f "$FILE" ]; then
+            echo "✅ Sending $FILE"
+            python scripts/send_newsletter.py "$FILE"
+          else
+            echo "❌ File $FILE not found"
+            exit 1
+          fi
