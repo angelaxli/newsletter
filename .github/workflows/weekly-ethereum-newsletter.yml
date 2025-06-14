@@ -65,35 +65,25 @@ jobs:
       - name: Combine Newsletter Sections
         id: combine_step
         run: |
-          # Define the absolute path for the final newsletter file
-          FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+          sudo bash -c '
+            FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+            TIMESTAMP=$(date -u +"%B %d, %Y")
 
-          # Create the final newsletter file with a header
-          TIMESTAMP=$(date -u +"%B %d, %Y")
-          echo "## Week in Ethereum News" > "$FINAL_FILE"
-          echo "### $TIMESTAMP" >> "$FINAL_FILE"
-          echo "" >> "$FINAL_FILE"
+            # Create the final newsletter file with a header
+            echo "## Week in Ethereum News" > "$FINAL_FILE"
+            echo "### $TIMESTAMP" >> "$FINAL_FILE"
+            echo "" >> "$FINAL_FILE"
+            
+            # Use find within the workspace to get all part_*.md files and sort them alphabetically
+            # The output of this command is then appended to the final file
+            find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
+            
+            echo "--- Final Combined Newsletter ---"
+            cat "$FINAL_FILE"
+            echo "---------------------------------"
+          '
           
-          # Use find within the workspace to get all part_*.md files and sort them alphabetically
-          find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
-          
-          echo "--- Final Combined Newsletter ---"
-          cat "$FINAL_FILE"
-          echo "---------------------------------"
       
-      - name: Debug Workspace Contents Before Artifact Upload
-        run: |
-          echo "Current working directory: $(pwd)"
-          echo "--- Listing GITHUB_WORKSPACE (${{ github.workspace }}) root contents (ls -la): ---"
-          ls -la ${{ github.workspace }}
-          echo "--- Recursively listing GITHUB_WORKSPACE contents (ls -laR) - showing all files in all subdirectories: ---"
-          ls -laR ${{ github.workspace }}
-          echo "--- Trying to find 'newsletter_*.md' files in GITHUB_WORKSPACE specifically: ---"
-          find ${{ github.workspace }} -name "newsletter_*.md" -ls
-          echo "--- Specifically checking for the exact file the AI claimed to save: ---"
-          ls -la ${{ github.workspace }}/newsletter_${{ env.TIMESTAMP }}.md || echo "Exact file ${{ github.workspace }}/newsletter_${{ env.TIMESTAMP }}.md not found by ls"
-          echo "--- End of Debug Workspace Contents ---"
-
       - name: Upload Summary Report
         uses: actions/upload-artifact@v4
         with:
@@ -110,9 +100,12 @@ jobs:
       - name: Install dependencies round 2
         run: pip install resend markdown2
         
+
       - name: Send Newsletter via Resend
         run: |
+          # Your send script now uses the combined file with an absolute path
+          # It can read the file even if it's owned by root.
           python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
         env:
-          NEWSLETTER_RECIPIENT: 226angelli@gmail.com
+          NEWSLETTER_RECIPIENT: new-week-in-ethereum@googlegroups.com
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
