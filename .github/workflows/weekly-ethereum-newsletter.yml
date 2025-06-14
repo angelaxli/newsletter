@@ -85,28 +85,52 @@ jobs:
             FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
             TIMESTAMP=$(date -u +"%B %d, %Y")
 
+            echo "Creating final newsletter file at $FINAL_FILE"
             # Create the final newsletter file with a header
             echo "## Week in Ethereum News" > "$FINAL_FILE"
             echo "### $TIMESTAMP" >> "$FINAL_FILE"
             echo "" >> "$FINAL_FILE"
             
-            # Explicitly append each part if it exists
-            if [ -f "${{ github.workspace }}/part_1_output.md" ]; then
-              cat "${{ github.workspace }}/part_1_output.md" >> "$FINAL_FILE"
+            # --- Verbose Combination Logic ---
+            echo "Checking for partial files..."
+            PART_1_FILE="${{ github.workspace }}/part_1_output.md"
+            PART_2_FILE="${{ github.workspace }}/part_2_output.md"
+            PART_3_FILE="${{ github.workspace }}/part_3_output.md"
+            
+            if [ -f "$PART_1_FILE" ]; then
+              echo "✅ Found Part 1. Appending to final newsletter."
+              cat "$PART_1_FILE" >> "$FINAL_FILE"
               echo -e "\n" >> "$FINAL_FILE"
+            else
+              echo "❌ WARNING: Part 1 file not found at $PART_1_FILE"
             fi
-            if [ -f "${{ github.workspace }}/part_2_output.md" ]; then
-              cat "${{ github.workspace }}/part_2_output.md" >> "$FINAL_FILE"
+            
+            if [ -f "$PART_2_FILE" ]; then
+              echo "✅ Found Part 2. Appending to final newsletter."
+              cat "$PART_2_FILE" >> "$FINAL_FILE"
               echo -e "\n" >> "$FINAL_FILE"
+            else
+              echo "❌ WARNING: Part 2 file not found at $PART_2_FILE"
             fi
-            if [ -f "${{ github.workspace }}/part_3_output.md" ]; then
-              cat "${{ github.workspace }}/part_3_output.md" >> "$FINAL_FILE"
+            
+            if [ -f "$PART_3_FILE" ]; then
+              echo "✅ Found Part 3. Appending to final newsletter."
+              cat "$PART_3_FILE" >> "$FINAL_FILE"
               echo -e "\n" >> "$FINAL_FILE"
+            else
+              echo "❌ WARNING: Part 3 file not found at $PART_3_FILE"
             fi
             
             echo "--- Final Combined Newsletter ---"
             cat "$FINAL_FILE"
             echo "---------------------------------"
+
+            # Final check to ensure the file is not just a header
+            # Count lines, if less than 5 (header + timestamp + blank line + maybe one content line), fail.
+            if [ $(wc -l < "$FINAL_FILE") -lt 5 ]; then
+              echo "::error::Final newsletter file is nearly empty. Halting workflow to prevent sending a blank email."
+              exit 1
+            fi
           '
 
       - name: Set up Python
