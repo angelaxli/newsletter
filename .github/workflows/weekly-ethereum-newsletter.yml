@@ -34,7 +34,8 @@ jobs:
 
       - name: Print context contents
         run: cat scripts/prompt_context.md
-      
+
+      # --- GENERATE SECTIONS INDIVIDUALLY ---
 
       - name: Generate Part 1 - Core Protocol
         id: generate_part_1
@@ -45,9 +46,13 @@ jobs:
             Save the result to: ${{ github.workspace }}/part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
-      - name: Verify Part 1 Output
-        if: always()
-        run: ls -laR ${{ github.workspace }}
+      - name: Validate Part 1 Output
+        run: |
+          if [ ! -f "${{ github.workspace }}/part_1_output.md" ]; then
+            echo "::error::Failed to generate Part 1 output file."
+            exit 1
+          fi
+          echo "✅ Part 1 output file created successfully."
 
       - name: Generate Part 2 - Ecosystem & App Layer
         id: generate_part_2
@@ -58,9 +63,13 @@ jobs:
             Save the result to: ${{ github.workspace }}/part_2_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
-      - name: Verify Part 2 Output
-        if: always()
-        run: ls -laR ${{ github.workspace }}
+      - name: Validate Part 2 Output
+        run: |
+          if [ ! -f "${{ github.workspace }}/part_2_output.md" ]; then
+            echo "::error::Failed to generate Part 2 output file."
+            exit 1
+          fi
+          echo "✅ Part 2 output file created successfully."
 
       - name: Generate Part 3 - Data-Driven & General Info
         id: generate_part_3
@@ -72,9 +81,13 @@ jobs:
           context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
           
-      - name: Verify Part 3 Output
-        if: always()
-        run: ls -laR ${{ github.workspace }}
+      - name: Validate Part 3 Output
+        run: |
+          if [ ! -f "${{ github.workspace }}/part_3_output.md" ]; then
+            echo "::error::Failed to generate Part 3 output file."
+            exit 1
+          fi
+          echo "✅ Part 3 output file created successfully."
 
       # --- COMBINE AND SEND ---
 
