@@ -35,43 +35,51 @@ jobs:
       - name: Print context
         run: cat scripts/prompt_context.md
 
-      - name: Generate first Section
+      - name: Generate First Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
-        env:
-          TIMESTAMP: ${{ env.TIMESTAMP }}
         with:
-          prompt_file: "prompts/prompt_1.md"
+          prompt: >- 
+            Read prompts/prompt_1.md from the root of the repository and use 
+            it to generate a newsletter.
+            Use date range: past 7 days
+            Save the result to: ${{ github.workspace }}/part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
-          output_file: "section1_${{ env.TIMESTAMP }}.md"
-
-      - name: Generate second Section
+      
+      - name: Generate Third Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
-        env:
-          TIMESTAMP: ${{ env.TIMESTAMP }}
         with:
-          prompt_file: "prompts/prompt_2.md"
+          prompt: >- 
+            Read prompts/prompt_3.md from the root of the repository and use 
+            it to generate a newsletter.
+            Your structured context data is located at 'scripts/prompt_context.md' in your workspace.
+            Please read this file to obtain the structured context data.
+            Use date range: past 7 days
+            Save the result to: ${{ github.workspace }}/part_3_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
-          output_file: "section2_${{ env.TIMESTAMP }}.md"
 
-      - name: Generate third Section
-        uses: xinbenlv/openhands-action@v1.0.1-rc3
-        env:
-          TIMESTAMP: ${{ env.TIMESTAMP }}
-        with:
-          prompt_file: "prompts/prompt_3.md"
-          llm_api_key: ${{ secrets.LLM_API_KEY }}
-          output_file: "section3_${{ env.TIMESTAMP }}.md"
+      # --- FIX PERMISSIONS & COMBINE ---
 
-      - name: Combine files into a single newsletter
+      - name: Combine Newsletter Sections
         run: |
-          echo "# Section 1" > combined_newsletter_${{ env.TIMESTAMP }}.md
-          cat section1_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
+          # Use sudo to ensure we have permission to create the final file
+          sudo bash -c '
+            # Change ownership of the workspace to the runner user to avoid permission issues
+            chown -R $(id -u):$(id -g) ${{ github.workspace }}
 
-          echo -e "\n# Section 2" >> combined_newsletter_${{ env.TIMESTAMP }}.md
-          cat section2_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
+            FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+            TIMESTAMP=$(date -u +"%B %d, %Y")
 
-          echo -e "\n# Section 3" >> combined_newsletter_${{ env.TIMESTAMP }}.md
-          cat section3_${{ env.TIMESTAMP }}.md >> combined_newsletter_${{ env.TIMESTAMP }}.md
+            echo "## Week in Ethereum News" > "$FINAL_FILE"
+            echo "### $TIMESTAMP" >> "$FINAL_FILE"
+            echo "" >> "$FINAL_FILE"
+            
+            # Find and combine all part_*_output.md files in the correct order
+            find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
+            
+            echo "--- Final Combined Newsletter ---"
+            cat "$FINAL_FILE"
+            echo "---------------------------------"
+            
 
       - name: Upload combined newsletter
         uses: actions/upload-artifact@v4
