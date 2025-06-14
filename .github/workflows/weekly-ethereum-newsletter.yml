@@ -45,6 +45,14 @@ jobs:
             Save the result to: ${{ github.workspace }}/part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
       
+      - name: Validate Part 1 Output
+        run: |
+          if [ ! -f "${{ github.workspace }}/part_1_output.md" ]; then
+            echo "::error::Failed to generate Part 1 output file. The AI agent did not create the expected output."
+            exit 1
+          fi
+          echo "✅ Part 1 output file created successfully."
+      
       - name: Generate Third Section
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
@@ -94,5 +102,5 @@ jobs:
           # The send script can now reliably read the final file
           python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
         env:
-          NEWSLETTER_RECIPIENT: new-week-in-ethereum@googlegroups.com
+          NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
