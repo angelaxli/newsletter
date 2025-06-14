@@ -61,33 +61,25 @@ jobs:
 
       - name: Combine Newsletter Sections
         run: |
-          # Use sudo to ensure we have permission to create the final file
-          sudo bash -c '
-            # Change ownership of the workspace to the runner user to avoid permission issues
-            chown -R $(id -u):$(id -g) ${{ github.workspace }}
+          # First, fix ownership of the entire workspace to ensure the runner user can write here.
+          sudo chown -R $(id -u):$(id -g) ${{ github.workspace }}
 
-            FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
-            TIMESTAMP=$(date -u +"%B %d, %Y")
+          # Define the absolute path for the final newsletter file
+          FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+          TIMESTAMP=$(date -u +"%B %d, %Y")
 
-            echo "## Week in Ethereum News" > "$FINAL_FILE"
-            echo "### $TIMESTAMP" >> "$FINAL_FILE"
-            echo "" >> "$FINAL_FILE"
-            
-            # Find and combine all part_*_output.md files in the correct order
-            find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
-            
-            echo "--- Final Combined Newsletter ---"
-            cat "$FINAL_FILE"
-            echo "---------------------------------"
-            
+          # Now, create the final file with the header as the runner user
+          echo "## Week in Ethereum News" > "$FINAL_FILE"
+          echo "### $TIMESTAMP" >> "$FINAL_FILE"
+          echo "" >> "$FINAL_FILE"
+          
+          # Find and combine all part_*_output.md files in the correct order
+          find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
+          
+          echo "--- Final Combined Newsletter ---"
+          cat "$FINAL_FILE"
+          echo "---------------------------------"
 
-      - name: Upload combined newsletter
-        uses: actions/upload-artifact@v4
-        with:
-          name: combined-newsletter
-          path: combined_newsletter_*.md
-          retention-days: 14
-          if-no-files-found: warn
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -97,17 +89,10 @@ jobs:
       - name: Install resend and markdown2
         run: pip install resend markdown2
 
-      - name: Send combined newsletter via Resend
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          NEWSLETTER_RECIPIENT: ${{ secrets.NEWSLETTER_RECIPIENT }}
-          TIMESTAMP: ${{ env.TIMESTAMP }}
+      - name: Send Newsletter via Resend
         run: |
-          FILE=combined_newsletter_${TIMESTAMP}.md
-          if [ -f "$FILE" ]; then
-            echo "✅ Sending $FILE"
-            python scripts/send_newsletter.py "$FILE"
-          else
-            echo "❌ File $FILE not found"
-            exit 1
-          fi
+          # The send script can now reliably read the final file
+          python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
+        env:
+          NEWSLETTER_RECIPIENT: new-week-in-ethereum@googlegroups.com
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
