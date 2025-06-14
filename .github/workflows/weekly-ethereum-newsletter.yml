@@ -35,7 +35,9 @@ jobs:
       - name: Print context contents
         run: cat scripts/prompt_context.md
       
+
       - name: Generate Part 1 - Core Protocol
+        id: generate_part_1
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -43,7 +45,12 @@ jobs:
             Save the result to: ${{ github.workspace }}/part_1_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
+      - name: Verify Part 1 Output
+        if: always()
+        run: ls -laR ${{ github.workspace }}
+
       - name: Generate Part 2 - Ecosystem & App Layer
+        id: generate_part_2
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -51,7 +58,12 @@ jobs:
             Save the result to: ${{ github.workspace }}/part_2_output.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
+      - name: Verify Part 2 Output
+        if: always()
+        run: ls -laR ${{ github.workspace }}
+
       - name: Generate Part 3 - Data-Driven & General Info
+        id: generate_part_3
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -59,6 +71,10 @@ jobs:
             Use it to generate the data-driven sections. Save the result to: ${{ github.workspace }}/part_3_output.md
           context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
+          
+      - name: Verify Part 3 Output
+        if: always()
+        run: ls -laR ${{ github.workspace }}
 
       # --- COMBINE AND SEND ---
 
@@ -74,23 +90,24 @@ jobs:
             echo "### $TIMESTAMP" >> "$FINAL_FILE"
             echo "" >> "$FINAL_FILE"
             
-            # Use find within the workspace to get all part_*.md files and sort them alphabetically
-            # The output of this command is then appended to the final file
-            find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
+            # Explicitly append each part if it exists
+            if [ -f "${{ github.workspace }}/part_1_output.md" ]; then
+              cat "${{ github.workspace }}/part_1_output.md" >> "$FINAL_FILE"
+              echo -e "\n" >> "$FINAL_FILE"
+            fi
+            if [ -f "${{ github.workspace }}/part_2_output.md" ]; then
+              cat "${{ github.workspace }}/part_2_output.md" >> "$FINAL_FILE"
+              echo -e "\n" >> "$FINAL_FILE"
+            fi
+            if [ -f "${{ github.workspace }}/part_3_output.md" ]; then
+              cat "${{ github.workspace }}/part_3_output.md" >> "$FINAL_FILE"
+              echo -e "\n" >> "$FINAL_FILE"
+            fi
             
             echo "--- Final Combined Newsletter ---"
             cat "$FINAL_FILE"
             echo "---------------------------------"
           '
-          
-      
-      - name: Upload Summary Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: weekly-ethereum-newsletter
-          path: newsletter_*.md
-          retention-days: 14
-          if-no-files-found: warn
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -107,5 +124,5 @@ jobs:
           # It can read the file even if it's owned by root.
           python scripts/send_newsletter.py "${{ github.workspace }}/final_newsletter.md"
         env:
-          NEWSLETTER_RECIPIENT: new-week-in-ethereum@googlegroups.com
+          NEWSLETTER_RECIPIENT: 226angelli@gmail.com
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
