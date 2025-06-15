@@ -35,8 +35,8 @@ jobs:
       - name: Print context
         run: cat scripts/prompt_context.md
 
-      - name: Generate Part 1
-        id: generate_part_1 # Add an ID to reference the output
+      - name: Generate Part 1 - Core Protocol
+        id: generate_part_1
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -44,12 +44,17 @@ jobs:
             Your final output should be ONLY the complete Markdown content for this section.
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
-      - name: Save Part 1 Output
-        if: steps.generate_part_1.outputs.result
-        run: echo "${{ steps.generate_part_1.outputs.result }}" > ${{ github.workspace }}/part_1_output.md
+      - name: Validate and Save Part 1
+        run: |
+          if [ -z "${{ steps.generate_part_1.outputs.result }}" ]; then
+            echo "::error::AI agent for Part 1 did not produce any output. Halting workflow."
+            exit 1
+          fi
+          echo "✅ Part 1 generated successfully. Saving to file..."
+          echo "${{ steps.generate_part_1.outputs.result }}" > ${{ github.workspace }}/part_1_output.md
 
-      - name: Generate Part 2
-        id: generate_part_2 # Add an ID
+      - name: Generate Part 2 - Ecosystem & App Layer
+        id: generate_part_2
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -57,12 +62,17 @@ jobs:
             Your final output should be ONLY the complete Markdown content for this section.
           llm_api_key: ${{ secrets.LLM_API_KEY }}
 
-      - name: Save Part 2 Output
-        if: steps.generate_part_2.outputs.result
-        run: echo "${{ steps.generate_part_2.outputs.result }}" > ${{ github.workspace }}/part_2_output.md
+      - name: Validate and Save Part 2
+        run: |
+          if [ -z "${{ steps.generate_part_2.outputs.result }}" ]; then
+            echo "::error::AI agent for Part 2 did not produce any output. Halting workflow."
+            exit 1
+          fi
+          echo "✅ Part 2 generated successfully. Saving to file..."
+          echo "${{ steps.generate_part_2.outputs.result }}" > ${{ github.workspace }}/part_2_output.md
 
-      - name: Generate Part 3
-        id: generate_part_3 # Add an ID
+      - name: Generate Part 3 - Data-Driven & General Info
+        id: generate_part_3
         uses: xinbenlv/openhands-action@v1.0.1-rc3
         with:
           prompt: |
@@ -71,31 +81,44 @@ jobs:
           context: scripts/prompt_context.md
           llm_api_key: ${{ secrets.LLM_API_KEY }}
           
-      - name: Save Part 3 Output
-        if: steps.generate_part_3.outputs.result
-        run: echo "${{ steps.generate_part_3.outputs.result }}" > ${{ github.workspace }}/part_3_output.md
-
-      # --- COMBINE AND SEND ---
-
-      - name: Combine Newsletter Sections
+      - name: Validate and Save Part 3
         run: |
-          # Use sudo to ensure we have permission to create the final file
-          sudo bash -c '
-            chown -R $(id -u):$(id -g) ${{ github.workspace }}
-            FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
-            TIMESTAMP=$(date -u +"%B %d, %Y")
+          if [ -z "${{ steps.generate_part_3.outputs.result }}" ]; then
+            echo "::error::AI agent for Part 3 did not produce any output. Halting workflow."
+            exit 1
+          fi
+          echo "✅ Part 3 generated successfully. Saving to file..."
+          echo "${{ steps.generate_part_3.outputs.result }}" > ${{ github.workspace }}/part_3_output.md
 
-            echo "## Week in Ethereum News" > "$FINAL_FILE"
-            echo "### $TIMESTAMP" >> "$FINAL_FILE"
-            echo "" >> "$FINAL_FILE"
-            
-            # Find and combine all part_*_output.md files
-            find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
-            
-            echo "--- Final Combined Newsletter ---"
-            cat "$FINAL_FILE"
-            echo "---------------------------------"
-          '
+      - name: Fix Permissions and Combine Newsletter Sections
+        run: |
+          # This step ensures the runner user owns all files before combining them.
+          # This is the definitive fix for the permission issues.
+          sudo chown -R $(id -u):$(id -g) ${{ github.workspace }}
+
+          # Define the absolute path for the final newsletter file
+          FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
+          TIMESTAMP=$(date -u +"%B %d, %Y")
+
+          echo "Combining partial files into $FINAL_FILE..."
+
+          # Create the final file with a header
+          echo "## Week in Ethereum News" > "$FINAL_FILE"
+          echo "### $TIMESTAMP" >> "$FINAL_FILE"
+          echo "" >> "$FINAL_FILE"
+          
+          # Find and combine all part_*_output.md files in the correct order
+          find "${{ github.workspace }}" -name "part_*_output.md" -print0 | sort -z | xargs -0 cat >> "$FINAL_FILE"
+          
+          echo "--- Final Combined Newsletter ---"
+          cat "$FINAL_FILE"
+          echo "---------------------------------"
+
+          # Final check to ensure the combined file is not empty
+          if [ $(wc -l < "$FINAL_FILE") -lt 5 ]; then
+            echo "::error::Final newsletter file is empty because generation steps failed. Halting."
+            exit 1
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
