@@ -72,10 +72,8 @@ jobs:
 
       - name: Combine Newsletter Sections
         run: |
-          # Fix ownership of the workspace to ensure we can create/write files
           sudo chown -R $(id -u):$(id -g) ${{ github.workspace }}
           
-          # Define absolute paths for all files using the new naming convention
           FINAL_FILE="${{ github.workspace }}/final_newsletter.md"
           PART1_FILE="${{ github.workspace }}/newsletter1_${{ env.TIMESTAMP }}.md"
           PART2_FILE="${{ github.workspace }}/newsletter2_${{ env.TIMESTAMP }}.md"
@@ -83,16 +81,14 @@ jobs:
           
           TIMESTAMP_HEADER=$(date -u +"%B %d, %Y")
 
-          # Create the final file with a header
           echo "## Week in Ethereum News" > "$FINAL_FILE"
           echo "### $TIMESTAMP_HEADER" >> "$FINAL_FILE"
           echo "" >> "$FINAL_FILE"
 
-          # Check for each part file and append its content if it exists
           if [ -f "$PART1_FILE" ]; then
             echo "Appending Part 1..."
             cat "$PART1_FILE" >> "$FINAL_FILE"
-            echo "" >> "$FINAL_FILE" # Add a newline for spacing
+            echo "" >> "$FINAL_FILE"
           fi
           if [ -f "$PART2_FILE" ]; then
             echo "Appending Part 2..."
