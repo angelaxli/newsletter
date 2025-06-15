@@ -16,7 +16,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 ## **Core Protocol & Research News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
-**Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
+**1. Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
 
   * **Content:**
       * Provide summaries for any core developer calls (ACDE, ACDC, etc.) that had notes published or were discussed within the past 7 days.
@@ -29,12 +29,12 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
   * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
-**Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
+**2. Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
 
   * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
   * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-**Future Protocol Upgrade (Post-Pectra)**
+**3. Future Protocol Upgrade (Post-Pectra)**
 
   * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). **Do not  list EIPs in this section**; instead, focus on the developments around the core technologies being built for future upgrades.
   * **Focus Areas to Investigate & Report On** "
@@ -49,7 +49,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Primary Sources for this Section:** ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
   * **Keywords for Search:** "PeerDAS breakout call," "EOF implementers call," "Verkle Tries Ethereum," "Ethereum statelessness research," "peerdas-devnet," "Ethereum protocol roadmap."
 
-**Layer 1**
+**4. Layer 1**
   * **Source of Information:** You must actively browse the web for this information, focusing on ethresear.ch, github.com/ethereum/pm, ethereum-magicians.org, and relevant researcher/developer posts on platforms like X (formerly Twitter) or personal blogs.
   * **Content:** Based on developments from the past 7 days, report on significant Layer 1 protocol discussions, research, and technical developments that are not part of a major named upgrade (like Pectra or Fusaka). Crucially, your goal here is to report on specific technical discussions and research updates. Do NOT list EIPs or their status changes in this section; that information belongs in the dedicated 'EIPs/Standards' section.
   * **Focus Areas to Investigate & Report On:**
@@ -67,7 +67,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
         * Summarize notes from any specific breakout calls for EIPs that are related to L1 but not yet scheduled for a specific upgrade (e.g., ePBS breakout calls). Report the call number and key discussion points. Note: This is for summarizing the call's content, not for reporting the EIP's status.
   * **Keywords for Search:** "Ethereum gas limit," "Data Always Ethereum," "inclusion list design," "QUIC Ethereum," "BuilderNet," "ePBS breakout," "EVMMAX implementers call."
 
-**Research**
+**5. Research**
 
   * **Source of Information:** You must actively browse ethresear.ch and other relevant sources (e.g., researcher blogs, academic papers) for this information.
   * **Content:** Based on developments from the past 7 days, identify and report on the most significant research topics, new posts, and active discussions. Your goal is to capture the most important research developments, whatever they may be.
@@ -104,4 +104,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
 **Output Format:**
-The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. Start with the "Highlight of the Week" section. **Do not include a main "Week in Ethereum News" header or a date.** All list items must use bullet points.
+* **General:** The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. 
+* **Headings:** All section headings MUST be formatted as Markdown H2 headings (e.g., `## Highlight of the Week`). Do NOT use numbers in the headings.
+* **Content:** Every item you write under a heading MUST start on a new line. All list items must use bullet points.
+* **Header:** Do NOT include a main "Week in Ethereum News" header or a date. Your output should begin directly with the first section heading.
