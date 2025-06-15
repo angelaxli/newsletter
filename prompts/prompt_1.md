@@ -14,7 +14,7 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 -----
 
-## **News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
+## **News Sections:** *(The following numbered sections are part of the overall newsletter structure. They should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
 **1. Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
 
