@@ -26,9 +26,9 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **Source of Information:** You must actively browse the web for this information. Your primary sources are the official GitHub release pages for each Ethereum client.
   * **Content:** Based on releases from the past 7 days, provide a comprehensive list of client updates.
   * **Output Structure & Requirements:**
-      * If and only if there are new Consensus Layer releases, create a sub-heading: Consensus layer:
+      * If and only if there are new Consensus Layer releases, create a bullet point for the subheading: Consensus layer:
           * Under this, create a bullet point for each new release. Each bullet point MUST include the client name, the version number, and a concise summary of key features or fixes from the release notes (e.g., * Lighthouse v6.0.1: patch for minor issues in v6).
-      * If and only if there are new Execution Layer releases, create a sub-heading: Execution layer:
+      * If and only if there are new Execution Layer releases, create a bullet point for the subheading: Execution layer:
           * Follow the same format as the Consensus layer, providing a detailed bullet point for each release.
   * **Clients to Check (non-exhaustive list):**
       * Consensus: Lighthouse, Lodestar, Nimbus, Prysm, Teku.
