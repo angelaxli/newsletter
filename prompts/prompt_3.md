@@ -130,5 +130,4 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
       * Strive for comprehensive coverage of significant events, but use judgment to filter out minor or irrelevant updates.
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
-**Output Format:**
-The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. All list items must use bullet points.
+**Output Format:** The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. Start with the "Highlight of the Week" section. Do not include a main "Week in Ethereum News" header or a date. All list items must use bullet points.
