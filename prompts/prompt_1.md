@@ -5,61 +5,76 @@
 The newsletter must cover **only the 7-day period concluding on the date of execution**. The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
-## **Ecosystem News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
-**6. Layer 2**
+**0. Highlight of the Week**
 
-  * **Content:** Significant developments from major Layer 2 scaling solutions and the broader L2 ecosystem from the past 7 days. Each item should be a bullet point.
-  * **Focus:**
-      * News from prominent L2s (e.g., Arbitrum, Optimism, zkSync, Starknet, Polygon solutions, Base, Linea).
-      * Major announcements, network upgrades, new features, tokenomics changes, sequencer/prover updates, fraud proof systems.
-      * New L2s launching or reaching significant milestones.
-      * Bridge updates and security news specific to L2s.
-      * Discussions on L2 interoperability, data availability solutions for L2s (e.g., EIP-4844 impact, Danksharding).
-  * **Keywords for Search (Starting Points):** "[L2 Name] news," "Layer 2 Ethereum updates," "Optimistic rollup," "ZK rollup," "L2beat," "EIP-4844 blobs."
+  * **Content:** Present the single most critical or impactful update from **within the specified 7-day period**. If multiple significant events occurred, select the one with the broadest impact or novelty.
+  * **Focus:** Major network upgrade milestones achieved *this week*, breakthrough EIPs proposed/advanced *this week*, crucial official announcements made *this week*, or major security events that happened *this week*.
+  * **Presentation:** A concise sentence or two, or a single bullet point with a link. Ensure this is a distinct highlight.
 
+-----
 
-**7. Developer Stuff**
+## **Core Protocol & Research News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
-  * **Content:** Updates on developer tools, frameworks, libraries, smart contract languages, and important resources for builders, from the past 7 days. Each item should be a bullet point.
-  * **Focus:**
-      * New versions or major feature releases for popular developer tools (e.g., Foundry, Hardhat, Remix, Ape, Tenderly, Infura, Alchemy).
-      * Updates to smart contract languages (Solidity, Vyper) or new development patterns.
-      * New libraries or SDKs that simplify dApp development.
-      * Important tutorials, workshops, developer grants, or documentation updates.
-      * Security tools for developers (e.g., linters, static analyzers).
-  * **Keywords for Search (Starting Points):** "[Tool Name] update," "Ethereum developer tools," "Solidity news," "Vyper news," "dApp development resources."
+**1. Eth R\&D Protocol Call(s) (e.g., All Core Devs Consensus/Execution, ACDC/ACDE)**
 
-**8. Security**
+  * **Content:**
+      * Provide summaries for any core developer calls (ACDE, ACDC, etc.) that had notes published or were discussed within the past 7 days.
+      * **Primarily source these summaries from posts by Andrew B Coathup (`@abcoathup`) on Ethereum Magicians (`https://ethereum-magicians.org/u/abcoathup/activity`).** Check this source for any new call notes posted within the 7-day window.
+      * For each call summarized, **you MUST include a direct link to the specific Ethereum Magicians post** (e.g., `https://ethereum-magicians.org/t/acdc-call-123-date/xxxxx`).
+      * The structure and level of detail for each call's summary should emulate how "Week in Ethereum News" typically presents these (e.g., highlighting key discussion points, decisions, and action items, often with sub-bullets for different topics discussed in the call).
+      * **Crucially, verify the date of the call itself and any critical details (like EIPs discussed or major decisions) against official sources (e.g., meeting agendas/notes on `https://github.com/ethereum/pm`) even when using summaries from Ethereum Magicians. Do NOT report calls or summaries of calls that occurred outside the specified 7-day window. If no relevant calls were summarized by `@abcoathup` or had official notes published this week, state that clearly or omit this section.**
+  * **Primary Sources for this Section:**
+      * Call Summaries: Posts by `@abcoathup` on `https://ethereum-magicians.org/u/abcoathup/activity`.
+      * Verification & Official Agendas/Notes: `https://github.com/ethereum/pm`.
+  * **Keywords for Search (Contextual, focus on checking primary sources first):** "Ethereum AllCoreDevs summary," "ACDE notes," "ACDC notes," "Ethereum core dev call."
 
-  * **Content:** Report on security incidents, vulnerabilities, audits, and best practices relevant to the Ethereum ecosystem, from the past 7 days. Each item should be a bullet point.
-  * **Focus:**
-      * Details of any significant DeFi exploits or hacks (protocol, amount lost, nature of vulnerability, post-mortems).
-      * Newly disclosed vulnerabilities in smart contracts, clients, wallets, or L2s.
-      * Important security audit releases for major protocols.
-      * New tools, standards, or initiatives aimed at improving ecosystem security (e.g., ERC-7265).
-      * Discussions on formal verification, bug bounties.
-  * **Keywords for Search (Starting Points):** "DeFi hack," "Ethereum security vulnerability," "smart contract audit," "crypto exploit report," "Ethereum bug bounty."
+**2. Pectra (Prague + Electra) Upgrade (or current named mainnet upgrade)**
 
-**9. Ecosystem**
+  * **Content:** Report specific progress, new EIPs considered/included (notably **EIP-7600: Pectra Upgrade Meta, see `https://eips.ethereum.org/EIPS/eip-7600`**), client readiness updates, testnet news, or important discussions related to the Pectra upgrade (or the current primary upcoming mainnet upgrade by its name) from the past 7 days. Focus should include updates on **devnets, specific testnet activities, dedicated Pectra testing calls,** and client compatibility related to Pectra from the past 7 days.
+  * **Keywords for Search:** "Pectra upgrade news," "[current\_upgrade\_name] Ethereum," "Ethereum network upgrade," "Pectra testnet," "Pectra testing call," "EIP-7600."
 
-  * **Content:** Broader news from the Ethereum ecosystem, including DAOs, NFTs, public goods, and community initiatives, from the past 7 days. Each item should be a bullet point.
-  * **Focus:**
-      * Major project milestones or product launches not covered in more specific sections.
-      * Significant DAO governance proposals, votes, or treasury actions.
-      * Updates on public goods funding initiatives (e.g., Gitcoin Grants rounds, Protocol Guild, ESP grants).
-      * Noteworthy NFT collections, market trends, or infrastructure developments (unless covered in "Notable at app layer").
-      * Community-led events, educational initiatives, or important discussions.
-  * **Keywords for Search (Starting Points):** "Ethereum project launch," "DAO news," "Gitcoin grants," "NFT news Ethereum," "Ethereum community."
+**3. Future Protocol Upgrade (Post-Pectra)**
 
-**10. Notable at app layer**
+  * **Content:** Based on developments from the past 7 days, report on early-stage discussions, research, proposals, and specific technical calls related to the next major network upgrade planned after Pectra (e.g., currently named Fusaka). **Do not  list EIPs in this section**; instead, focus on the developments around the core technologies being built for future upgrades.
+  * **Focus Areas to Investigate & Report On** "
+    * **Specific Implementer & Breakout Calls:** Actively look for and summarize notes from technical breakout sessions or implementer calls that occurred this week. Report the call number and key discussion points. Examples of calls to look for include:
+       * PeerDAS breakout calls
+       * EOF (EVM Object Format) implementers calls
+       * Verkle Tries implementers calls
+   * **Major Research & Technology Updates:** Report on significant progress, new research, or benchmark results for the core technologies being developed for future upgrades. This includes:
+       * Updates on testnets for these future features (e.g., "peerdas-devnet-X status").
+       * Benchmark results or performance analysis (e.g., "EOF benefits for ZK proofs").
+       * New research or major discussions on ethresear.ch related to statelessness, state management, etc.
+  * **Primary Sources for this Section:** ethresear.ch, github.com/ethereum/pm (for meeting notes/agendas), official client team blogs, and trusted summaries on platforms like Ethereum Magicians.
+  * **Keywords for Search:** "PeerDAS breakout call," "EOF implementers call," "Verkle Tries Ethereum," "Ethereum statelessness research," "peerdas-devnet," "Ethereum protocol roadmap."
 
-  * **Content:** Highlight interesting new decentralized applications (dapps), user-facing innovations, or significant updates to existing applications on Ethereum or L2s, from the past 7 days. Each item should be a bullet point.
-  * **Focus:**
-      * Innovative or unique dapps gaining traction.
-      * Significant feature releases or milestones for established applications.
-      * Trends in application development (e.g., SocialFi, DePIN, new gaming models).
-  * **Keywords for Search (Starting Points):** "New Ethereum dApp," "[dApp Name] update," "DeFi project launch," "NFT marketplace news."
+**4. Layer 1**
+  * **Source of Information:** You must actively browse the web for this information, focusing on ethresear.ch, github.com/ethereum/pm, ethereum-magicians.org, and relevant researcher/developer posts on platforms like X (formerly Twitter) or personal blogs.
+  * **Content:** Based on developments from the past 7 days, report on significant Layer 1 protocol discussions, research, and technical developments that are not part of a major named upgrade (like Pectra or Fusaka). Crucially, your goal here is to report on specific technical discussions and research updates. Do NOT list EIPs or their status changes in this section; that information belongs in the dedicated 'EIPs/Standards' section.
+  * **Focus Areas to Investigate & Report On:**
+     * **Gas Limit, Fees, and Data Availability:**
+        * Look for discussions or proposals regarding the gas limit, including any notable entities signaling for an increase (e.g., using a signaling dashboard).
+        * Report on research related to bandwidth availability and its implications for blob count or block size.
+    * **Data & Censorship Resistance:**
+        * Find updates on topics like "Data Always" or discussions about the role of MEV-Boost relays in network stability and reorgs.
+        * Summarize any discussions on inclusion list design, such as comparisons between same-slot vs. next-slot proposals.
+    * **Networking Layer:**
+        * Report on the status of QUIC support adoption across the network, including any available statistics on node distribution.
+    * **Block Building & MEV Infrastructure**:
+        * Look for news about new or updated block building networks (e.g., BuilderNet) or infrastructure related to MEV that aims to benefit users or stakers.
+    * **Specific EIP Breakout Calls:**
+        * Summarize notes from any specific breakout calls for EIPs that are related to L1 but not yet scheduled for a specific upgrade (e.g., ePBS breakout calls). Report the call number and key discussion points. Note: This is for summarizing the call's content, not for reporting the EIP's status.
+  * **Keywords for Search:** "Ethereum gas limit," "Data Always Ethereum," "inclusion list design," "QUIC Ethereum," "BuilderNet," "ePBS breakout," "EVMMAX implementers call."
+
+**5. Research**
+
+  * **Source of Information:** You must actively browse ethresear.ch and other relevant sources (e.g., researcher blogs, academic papers) for this information.
+  * **Content:** Based on developments from the past 7 days, identify and report on the most significant research topics, new posts, and active discussions. Your goal is to capture the most important research developments, whatever they may be.
+  * **Output Structure:**
+    * For each distinct major topic or thread you find, create a main bullet point to act as a thematic heading (e.g., * [Theme of Research]:).
+    * Under each topic, create one or more nested bullet points summarizing the specific research paper, proposal, or discussion.
+  * **Keywords for Search:**  "ethresear.ch," "Ethereum research."
 
 **General AI Instructions:**
 
@@ -89,4 +104,4 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
 **Output Format:**
-The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. All list items must use bullet points.
+The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. Start with the "Highlight of the Week" section. All list items must use bullet points.
