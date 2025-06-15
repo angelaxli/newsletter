@@ -1,4 +1,4 @@
-**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue**.Add commentMore actions
+**Objective:** Create a comprehensive and engaging newsletter summarizing key developments, news, and discussions within the Ethereum ecosystem, structured **exactly like a typical "Week in Ethereum News" issue**.
 
 **CRITICAL OVERARCHING RULE: This newsletter MUST ONLY contain information, news, and updates that have occurred or were published within the strict 7-day period concluding on the date of execution (e.g., if executed on May 25, 2025, it covers Monday, May 19, 2025, to Sunday, May 25, 2025, inclusive). Furthermore, if any defined section or category below does not have any relevant updates from this 7-day period, that entire section or category MUST be omitted from the final newsletter. Do not include sections with no new information.**
 
@@ -9,26 +9,25 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
 
 **6. Layer 2**
 
-  * **Content:** Significant developments from major Layer 2 scaling solutions and the broader L2 ecosystem from the past 7 days. Each item should be a bullet point.
+  * **Source of Information:** You must actively browse the web for this information. Primary sources are official project blogs (e.g., Arbitrum, Optimism, Base, Starknet), developer posts on X (formerly Twitter), and reputable crypto news outlets covering L2s.
+  * **Content:** Based on developments from the past 7 days, report on significant technical and ecosystem developments related to Layer 2s. Your goal is to report on specific technical milestones, new features, and notable project launches, not just TVL or activity statistics. Each item should be a bullet point.
   * **Focus:**
-      * News from prominent L2s (e.g., Arbitrum, Optimism, zkSync, Starknet, Polygon solutions, Base, Linea).
-      * Major announcements, network upgrades, new features, tokenomics changes, sequencer/prover updates, fraud proof systems.
-      * New L2s launching or reaching significant milestones.
-      * Bridge updates and security news specific to L2s.
-      * Discussions on L2 interoperability, data availability solutions for L2s (e.g., EIP-4844 impact, Danksharding).
-  * **Keywords for Search (Starting Points):** "[L2 Name] news," "Layer 2 Ethereum updates," "Optimistic rollup," "ZK rollup," "L2beat," "EIP-4844 blobs."
+      * Rollup Milestones & Proving Systems: Report on any L2 achieving a new "stage" of decentralization (e.g., Stage 1 or 2 rollup status) or updates to their proving systems (e.g., launching new fault proofs or validity provers).
+      * New Features & Developer Tools: Look for new user or developer features that improve the L2's functionality, such as forced transaction inclusion mechanisms, new developer tools, or economic model changes.
+      * Ecosystem Growth: Announce the launch of significant new L2 chains or public testnets, noting their underlying technology (e.g., OP Stack, ZK Stack, new VMs).
+      * Research & Innovative Designs: Summarize any new or significant design proposals for rollups or L2 architecture coming from researchers or developers.
+  * **Keywords for Search (Starting Points):** "Layer 2 Ethereum updates," "L2 fault proofs," "L2 rollup stages," "new Layer 2 launch," "L2 new virtual machine," "blob usage," "L2 new features."
 
+**7. Stuff for Developers**
 
-**7. Developer Stuff**
-
-  * **Content:** Updates on developer tools, frameworks, libraries, smart contract languages, and important resources for builders, from the past 7 days. Each item should be a bullet point.
+  * **Source of Information:** You must actively browse the web. Your primary sources are official project GitHub repositories (especially release pages), developer blogs, and posts on X (formerly Twitter) from prominent dev tool teams (Foundry, Hardhat, OpenZeppelin, etc.) and well-known developers.
+  * **Content:** Based on developments from the past 7 days, report on specific updates to developer tools, new open-source libraries, and practical resources for builders. Your goal is to find concrete updates for developers. Do NOT report on general EIP discussions or their status changes in this section.
   * **Focus:**
-      * New versions or major feature releases for popular developer tools (e.g., Foundry, Hardhat, Remix, Ape, Tenderly, Infura, Alchemy).
-      * Updates to smart contract languages (Solidity, Vyper) or new development patterns.
-      * New libraries or SDKs that simplify dApp development.
-      * Important tutorials, workshops, developer grants, or documentation updates.
-      * Security tools for developers (e.g., linters, static analyzers).
-  * **Keywords for Search (Starting Points):** "[Tool Name] update," "Ethereum developer tools," "Solidity news," "Vyper news," "dApp development resources."
+      * New versions or major feature releases for popular developer tools (e.g., Foundry, Hardhat, Remix, Ape, Tenderly, Infura, Alchemy, Echidna, OpenZeppelin Contracts).
+      *New Libraries, Utilities & Smart Contracts: Report on the release of new open-source libraries, helpful utilities, or interesting smart contract designs that developers can use (e.g., new Solidity/Vyper libraries, innovative contract architectures).
+      * Guides, Tutorials & Educational Content: Find and summarize new, practical guides, in-depth explainers, or educational courses that would be valuable for Ethereum developers.
+      * Contests & Capture The Flags (CTFs): Announce new developer-focused contests or CTFs, or report on the winners and interesting solutions from recently concluded ones.
+  * **Keywords for Search (Starting Points):** "Ethereum developer tools," "EVM developer framework," "Solidity tooling," "smart contract library update," "Solidity guide," "Vyper tutorial," "Solidity CTF."
 
 **8. Security**
 
@@ -89,4 +88,4 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
 **Output Format:**
-The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. All list items must use bullet points.
+The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. Start with the "Highlight of the Week" section. **Do not include a main "Week in Ethereum News" header or a date.** All list items must use bullet points.
