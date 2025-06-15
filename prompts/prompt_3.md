@@ -131,7 +131,8 @@ The newsletter must cover **only the 7-day period concluding on the date of exec
   * **"Week in Ethereum News" Style:** **This is paramount.** Emulate the exact section titling, dynamic inclusion of all sections based on weekly content, general style, depth, and comprehensiveness of a typical "Week in Ethereum News" issue. The AI should "read" several recent issues to internalize the style, tone, and level of detail.
 
 **Output Format:**
-  * **General:** The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved. 
+  * **General:** The final output should be a well-formatted newsletter in Markdown, suitable for publication, with all original links and references preserved.
+  * **Scope:** Your output must ONLY contain the sections listed in this prompt (Centralization watch, Client Releases, EIPs/Standards, Onchain Stats, Regulation/Business/Tokens, Enterprise, Miscellaneous, Job Postings, Upcoming Dates of Note). Do not generate content for any other sections.
   * **Headings:** All section headings MUST be formatted as Markdown H2 headings (e.g., `## Centralization watch: threatening the value of your ETH`). Do NOT use numbers in the headings.
   * **Content:** Every item you write under a heading MUST start on a new line. All list items must use bullet points.
   * **Header:** Do NOT include a main "Week in Ethereum News" header or a date. Your output should begin directly with the first section heading.
