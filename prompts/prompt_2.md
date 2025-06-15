@@ -5,7 +5,7 @@
 The newsletter must cover **only the 7-day period concluding on the date of execution**. The AI must emphasize clarity, **absolute factual accuracy, verifiable timeliness (all information strictly from the past 7 days unless intrinsically referencing future events based on current announcements)**, relevance, and use its judgment to find and prioritize the most impactful information within this exact structure, ensuring all items are bullet-pointed under their respective headings. **This newsletter is for a high-stakes audience; errors or outdated information are unacceptable.**
 
 **Newsletter Structure and Content Guidelines (Emulating "Week in Ethereum News"):**
-## **Ecosystem News Sections:** *(The following numbered sections are part of the overall newsletter structure. Like all other sections, they should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
+## **News Sections:** *(The following numbered sections are part of the overall newsletter structure. They should only be included if relevant news from the past 7 days exists for them. Each item under these headings must be a bullet point.)*
 
 **6. Layer 2**
 
